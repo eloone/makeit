@@ -95,3 +95,27 @@ body{
 .task-extra .cursor.checked, .task-extra .cursor.hover{
     color:black;
 }
+
+.task-list {
+  margin: 0;
+  padding: 0;
+}
+
+/* Task list */
+.task-list li {
+  margin: 2px 0;
+  padding: 0 5px;
+  list-style-type: none;
+  background: #eee;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.task-list li:hover, .task-list .done {
+  background: #ccc;
+}
+
+.task-list .done {
+  text-decoration: line-through;
+}
+

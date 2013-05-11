@@ -1,0 +1,1 @@
+var Tasks = new Meteor.Collection("tasks");

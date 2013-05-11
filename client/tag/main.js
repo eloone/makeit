@@ -16,14 +16,14 @@ Template.listTag.tags = function () {
   });
 
   tag_infos = _.sortBy(tag_infos, function (x) { return x.tag; });
-  tag_infos.unshift({text: null, count: total_count});
+  tag_infos.unshift({text: 'All items', count: total_count});
 
   return tag_infos;
 }
 
-Template.listTag.tag_text = function () {
-  return this.text || "All items";
-};
+// Template.listTag.tag_text = function () {
+//   return this.text || "All items";
+// };
 
 Template.listTag.selected = function () {
   return Session.equals('listTag', this.text) ? 'selected' : '';

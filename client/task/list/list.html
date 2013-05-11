@@ -1,7 +1,11 @@
 <template name="task-list">
   <ul class="task-list">
   {{#each tasks}}
-    <li><input type="checkbox" name="{{_id}}" {{#if done}}checked="checked"{{/if}}>{{text}}</li>
+    <li data-id='{{_id}}'>{{text}}</li>
+  {{/each}}
+
+  {{#each doneTasks}}
+    <li class="done" data-id='{{_id}}'>{{text}}</li>
   {{/each}}
   </ul>
 </template>

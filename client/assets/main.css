@@ -1,5 +1,6 @@
 body{
     font-family: 'Quicksand', sans-serif;
+    padding:15px;
 }
 
 .side-pane{
@@ -32,4 +33,30 @@ body{
     list-style-type:none;
     color:#777;
     font-size: 18px;
+}
+
+.task-creator .task-extra{
+    float:right;
+}
+
+.task-creator .task-extra .extra{
+    float: left;
+}
+
+.task-creator .task-extra i{
+    font-size:3.1em;
+    padding:5px;
+}
+
+.task-extra .icon-bolt{
+    color:#eee;
+}
+
+.task-extra .level .icon-bolt{
+    float:right;
+}
+
+.task-extra .icon-bolt:hover,
+.task-extra .icon-bolt:hover ~ .icon-bolt{
+    color:black;
 }

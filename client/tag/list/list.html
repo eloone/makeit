@@ -1,0 +1,10 @@
+<template name="tag-list">
+  <div>
+    <div class="label">Show:</div>
+    <ul>
+      {{#each tags}}
+        <li><a href="#/tag/{{text}}">{{label}} - <span class="count">({{count}})</span> - <span class="progress">({{progress}}%)</span></a></li>
+      {{/each}}
+    </ul>
+  </div>
+</template>

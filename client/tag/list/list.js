@@ -1,5 +1,5 @@
 // Pick out the unique tags from all todos in current list.
-Template.listTag.tags = function () {
+Template['tag-list'].tags = function () {
   if (! Meteor.user())
     return ;
 
@@ -9,7 +9,7 @@ Template.listTag.tags = function () {
   var total_progress = 0.0;
 
 	Tasks.find({user: Meteor.user()._id}).forEach(function (task) {
-  	_.each(task.tags, function (tag) {
+    _.each(task.tags, function (tag) {
       var tag_info = _.find(tag_infos, function (x) { return x.text === tag; });
         if (! tag_info) {
           if (task.done) {
@@ -21,7 +21,8 @@ Template.listTag.tags = function () {
         }
         else {
           tag_info.count++;
-          if (task.done) tag_info.done++;
+          if (task.done)
+            tag_info.done++;
         }
     });
     if (task.done) total_done++;
@@ -39,21 +40,8 @@ Template.listTag.tags = function () {
   tag_infos.unshift({text: null, count: total_count, done: total_done, progress: total_progress});
 
   return tag_infos;
-}
+};
 
-Template.listTag.tag_text = function () {
+Template['tag-list'].label = function () {
   return this.text || "All items";
 };
-
-Template.listTag.selected = function () {
-  return Session.equals('listTag', this.text) ? 'selected' : '';
-};
-
-Template.listTag.events({
-  'mousedown .tag': function () {
-    if (Session.equals('listTag', this.text))
-      Session.set('listTag', null);
-    else
-      Session.set('listTag', this.text);
-  }
-});

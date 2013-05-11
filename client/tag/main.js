@@ -1,11 +1,14 @@
 // Pick out the unique tags from all todos in current list.
 Template.listTag.tags = function () {
+  if (! Meteor.user())
+    return ;
+
 	var tag_infos = [];
 	var total_count = 0.0;
   var total_done = 0.0;
   var total_progress = 0.0;
 
-	Tasks.find().forEach(function (task) {
+	Tasks.find({user: Meteor.user()._id}).forEach(function (task) {
   	_.each(task.tags, function (tag) {
       var tag_info = _.find(tag_infos, function (x) { return x.text === tag; });
         if (! tag_info) {

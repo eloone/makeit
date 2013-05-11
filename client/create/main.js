@@ -27,6 +27,7 @@ Template.create.events({
 
     // Insert task
     Tasks.insert({
+      user: Meteor.user()._id,
       text: stripHashTags(text),
       tags: extractHashTags(text),
       satisfaction: getCursorScore('satisfaction'),

@@ -1,0 +1,1 @@
+Template.list.tags = Tags.find();

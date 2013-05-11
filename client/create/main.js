@@ -2,7 +2,9 @@ tagRegexp = /#([^\s]*)/g;
 
 // Extract hash tags from a text
 extractHashTags = function (text) {
-  return text.match(tagRegexp).replace(/^#/, '');
+  return _.map(text.match(tagRegexp), function (text) {
+    return text.replace(/^#/, '');
+  });
 };
 
 // Remove hash tags from a text

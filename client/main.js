@@ -6,7 +6,7 @@ Template.create.events({
       return true;
 
     Tasks.insert({
-      text: 'test'
+      text: $(event.target).val()
     });
   }
 });

@@ -1,4 +1,4 @@
-Template.list.events({
+Template['task-list'].events({
   'change ul li [type=checkbox]': function (event) {
     var $target = $(event.target),
         id = $target.attr('name'),
@@ -10,9 +10,14 @@ Template.list.events({
 });
 
 // Exports tasks list
-Template.list.tasks = function () {
+Template['task-list'].tasks = function () {
   if (! Meteor.user())
     return ;
 
-  return Tasks.find({user: Meteor.user()._id});
+  var query = {user: Meteor.user()._id};
+
+  if (Session.get('tag'))
+    query.tags = Session.get('tag');
+
+  return Tasks.find(query);
 };

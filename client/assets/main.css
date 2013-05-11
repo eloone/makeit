@@ -36,15 +36,22 @@ body{
 
 .task-creator .task-extra{
     float:right;
+    width:13%;
+    margin-top: -5px;
 }
 
 .task-creator .task-extra .extra{
     float: left;
+    cursor:pointer;
 }
 
 .task-creator .task-extra i{
     font-size:2.1em;
     padding:5px;
+}
+
+.task-extra .extra-set{
+    float:left;
 }
 
 .task-extra .icon-bolt{
@@ -53,6 +60,8 @@ body{
 
 .task-extra .level .icon-bolt{
     float:right;
+    margin-right:5px;
+    padding-top:0;
 }
 
 .task-extra .icon-bolt:hover,
@@ -60,12 +69,25 @@ body{
     color:black;
 }
 
-
-.cursor .icon-bolt{
-    color: #777;
-    font-size: 18px;
+.task-creator .task-extra .icon-heart{
+    font-size:18px;
+    color:#eee;
 }
-.cursor .empty{
-  color: #fff;
-  text-shadow: 0 0 1px #000;
+
+.task-creator .likeness .icon-heart{
+    float:right;
+}
+
+.task-extra .icon-heart:hover,
+.task-extra .icon-heart:hover ~ .icon-heart{
+    color:black;
+}
+
+.task-creator .task-extra .icon-calendar{
+    padding:0;
+    color:#eee;
+}
+
+.task-creator .task-extra .icon-calendar:hover{
+    color:black;
 }

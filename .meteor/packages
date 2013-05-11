@@ -6,5 +6,7 @@
 autopublish
 insecure
 preserve-inputs
+less
 jquery
 accounts-facebook
+bootstrap

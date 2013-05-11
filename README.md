@@ -1,8 +1,8 @@
-# Punkit
+# Makeit
 
 A todo list that help you to acheive your dreams.
 
-Punkit was built during Paris Angelhack 2013 by a team of four persons :
+Makeit was built during Paris Angelhack 2013 by a team of four persons :
 
 * [Elodie Rafalimanana](http://www.hackathon.io/eloone)
 * [Adlen Afane](http://www.hackathon.io/adlen)

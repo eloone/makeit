@@ -1,35 +1,38 @@
 body{
-    font-family: 'Quicksand', sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
 .side-pane{
-    float:left;
-    width:10%;
-    margin-right:15px;
+  float: left;
+  width: 10%;
+  margin-right: 15px;
 }
 
 .main-pane{
-    float:left;
-    width:88%;
+  float: left;
+  width: 88%;
 }
 
 .side-pane .home{
-    height:100px;
-    background:#eee;
+  height: 100px;
+  background: #eee;
 }
 
 .main-pane .task-creator input[name='task']{
-    padding:15px;
-    border:0;
-    font-size: 24px;
-    color:#777;
-    border:1px solid #eee;
-    border-radius:10px;
-    width:70%;
+  padding: 15px;
+  font-size: 24px;
+  color: #777;
+  border: 1px solid #eee;
+  border-radius: 10px;
 }
 
 .main-pane .tasks-list{
-    list-style-type:none;
-    color:#777;
-    font-size: 18px;
+  list-style-type: none;
+  color: #777;
+  font-size: 18px;
+}
+
+.cursor .empty{
+  color: #fff;
+  text-shadow: 0 0 1px #000;
 }

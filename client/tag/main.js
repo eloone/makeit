@@ -34,9 +34,6 @@ Template.listTag.tags = function () {
   }
 
   total_progress = Math.round(100 * total_done / total_count);
-  console.log('total_count', total_count);
-  console.log('total_done', total_done);
-  console.log('total_progress', total_progress);
 
   tag_infos = _.sortBy(tag_infos, function (x) { return x.tag; });
   tag_infos.unshift({text: null, count: total_count, done: total_done, progress: total_progress});

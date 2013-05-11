@@ -1,10 +1,29 @@
 <head>
-  <title>Makeit</title>
+  <title>Make it</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/3.10.0/build/cssreset/cssreset-min"/>
+  <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="medias/main.css"/>
 </head>
 
 <body>
-  {{> listTag}}
-  {{> login}}
-  {{> create}}
-  {{> list}}
+    <div class="side-pane">
+        <div class="home">
+            
+        </div>
+        <div class="list-tags">
+            
+        </div>
+    </div>
+    <div class="main-pane">
+        <div class="header"></div>
+        <div class="task-creator">
+             {{> create}}
+            <div class="points">
+
+            </div>
+        </div>
+        <div class="tasks-lister">
+             {{> list}}
+        </div>
+    </div>
 </body>

@@ -44,16 +44,24 @@ Template['new-task'].events({
 
   'click .cursor': function (event) {
     var $target = $(event.target);
-    $target.prevAll().andSelf().addClass('checked');
-    $target.nextAll().removeClass('checked');
+    if($('input[name="task"]').val() != ''){
+        $target.prevAll().andSelf().addClass('checked');
+        $target.nextAll().removeClass('checked');
+    }
   },
-  'mouseenter .cursor': function(event){
+  'mouseleave .trigger': function(event){
     var $target = $(event.target);
-    $target.prevAll().andSelf().addClass('hover');
-    $target.nextAll().removeClass('hover');
+    $target.siblings().andSelf().removeClass('hover');   
   },
-  'mouseleave .cursor': function(event){
+  'mouseenter .trigger' : function(event){
     var $target = $(event.target);
-    $target.siblings().andSelf().removeClass('hover');
+    if($('input[name="task"]').val() != ''){
+        $target.prevAll().andSelf().addClass('hover');
+        $target.nextAll().removeClass('hover');
+        $target.css('cursor', 'pointer');
+    }
+    else{
+        $target.css('cursor', 'default');
+    }
   }
 });

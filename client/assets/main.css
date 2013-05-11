@@ -88,7 +88,7 @@ body{
     color:#eee;
 }
 
-.task-creator .task-extra .icon-calendar:hover{
+.task-creator .task-extra .icon-calendar.hover{
     color:black;
 }
 

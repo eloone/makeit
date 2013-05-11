@@ -1,45 +1,64 @@
-// Pick out the unique tags from all todos in current list.
-Template['tag-list'].tags = function () {
+// Return tag list
+getTags = function () {
+  var tags = [],
+  taskCount = 0,
+  doneCount = 0,
+  difficultyCount = 0;
+
   if (! Meteor.user())
-    return ;
+    return tags;
 
-	var tag_infos = [];
-	var total_count = 0.0;
-  var total_done = 0.0;
-  var total_progress = 0.0;
+  // Retrieve tags
+  Tasks.find({user: Meteor.user()._id}).forEach(function (task) {
+    _.each(task.tags, function (text) {
+      var tag = _.where(tags, {text: text})[0] || null;
 
-	Tasks.find({user: Meteor.user()._id}).forEach(function (task) {
-    _.each(task.tags, function (tag) {
-      var tag_info = _.find(tag_infos, function (x) { return x.text === tag; });
-        if (! tag_info) {
-          if (task.done) {
-            tag_infos.push({text: tag, count: 1.0, done: 1});
-          }
-          else {
-            tag_infos.push({text: tag, count: 1.0, done: 0});
-          }
-        }
-        else {
-          tag_info.count++;
-          if (task.done)
-            tag_info.done++;
-        }
+      if (! tag)
+        tags.push({
+          text: text,
+          count: 1,
+          done: task.done ? 1 : 0,
+          difficulty: task.difficulty
+        });
+      else {
+        tag.count++;
+        tag.done = task.done ? tag.done + 1 : tag.done;
+        tag.difficulty += task.difficulty;
+      }
     });
-    if (task.done) total_done++;
-    total_count++;
+
+    taskCount++;
+    doneCount = task.done ? doneCount + 1 : doneCount;
+    difficultyCount += task.difficulty;
   });
 
-  // Compute the progress
-  for (var i=0; i<tag_infos.length; i++) {
-    tag_infos[i].progress = Math.round(100 * tag_infos[i].done / tag_infos[i].count);
-  }
+  tags.unshift({
+    text: null,
+    count: taskCount,
+    done: doneCount,
+    difficulty: difficultyCount
+  });
 
-  total_progress = Math.round(100 * total_done / total_count);
+  // Compute progress, difficulty
+  _.map(tags, function (tag) {
+    return _.extend(tag, {
+      progress: Math.round(tag.done / tag.count * 100),
+      complete: tag.done === tag.count,
+      difficultyAverage: Math.round(tag.difficulty / tag.count / 3 * 100) / 100
+    });
+  });
 
-  tag_infos = _.sortBy(tag_infos, function (x) { return x.tag; });
-  tag_infos.unshift({text: null, count: total_count, done: total_done, progress: total_progress});
+  // Sort tags
+  tags = _.sortBy(tags, function (tag) {
+    return tag.text;
+  });
 
-  return tag_infos;
+  return tags;
+};
+
+// Pick out the unique tags from all todos in current list.
+Template['tag-list'].tags = function () {
+  return getTags();
 };
 
 Template['tag-list'].label = function () {

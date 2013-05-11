@@ -1,5 +1,6 @@
 body{
-  font-family: 'Quicksand', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    padding:15px;
 }
 
 .side-pane{
@@ -24,15 +25,69 @@ body{
   color: #777;
   border: 1px solid #eee;
   border-radius: 10px;
+  width:80%;
 }
 
 .main-pane .tasks-list{
-  list-style-type: none;
-  color: #777;
-  font-size: 18px;
+    list-style-type:none;
+    color:#777;
+    font-size: 18px;
 }
 
-.cursor .empty{
-  color: #fff;
-  text-shadow: 0 0 1px #000;
+.task-creator .task-extra{
+    float:right;
+    width:13%;
+    margin-top: -5px;
+}
+
+.task-creator .task-extra .extra{
+    float: left;
+    cursor:pointer;
+}
+
+.task-creator .task-extra i{
+    font-size:2.1em;
+    padding:5px;
+}
+
+.task-extra .extra-set{
+    float:left;
+}
+
+.task-extra .icon-bolt{
+    color:#eee;
+}
+
+.task-extra .level .icon-bolt{
+    float:right;
+    margin-right:5px;
+    padding-top:0;
+}
+
+.task-extra .icon-bolt:hover,
+.task-extra .icon-bolt:hover ~ .icon-bolt{
+    color:black;
+}
+
+.task-creator .task-extra .icon-heart{
+    font-size:18px;
+    color:#eee;
+}
+
+.task-creator .likeness .icon-heart{
+    float:right;
+}
+
+.task-extra .icon-heart:hover,
+.task-extra .icon-heart:hover ~ .icon-heart{
+    color:black;
+}
+
+.task-creator .task-extra .icon-calendar{
+    padding:0;
+    color:#eee;
+}
+
+.task-creator .task-extra .icon-calendar:hover{
+    color:black;
 }

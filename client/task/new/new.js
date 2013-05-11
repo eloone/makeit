@@ -17,7 +17,7 @@ getCursorScore = function (cursor) {
   return $('[data-type=' + cursor + '] i').not('.empty').length;
 };
 
-Template.create.events({
+Template['new-task'].events({
   'keyup [name=task]': function (event) {
     if (event.keyCode !== 13) // 13 = enter
       return true;

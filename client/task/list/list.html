@@ -1,5 +1,5 @@
-<template name="list">
-  <ul class="tasks-list">
+<template name="task-list">
+  <ul class="task-list">
   {{#each tasks}}
     <li><input type="checkbox" name="{{_id}}" {{#if done}}checked="checked"{{/if}}>{{text}}</li>
   {{/each}}

@@ -4,6 +4,8 @@
 </head>
 
 <body>
+    {{#if currentUser}}
+    {{> user-infos}}
     <div class="side-pane">
         <div class="home">
 
@@ -24,4 +26,5 @@
              {{> list}}
         </div>
     </div>
+    {{/if}}
 </body>

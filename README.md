@@ -17,4 +17,6 @@ Add line to `/etc/hosts` : `127.0.0.1 makeitdev.meteor.com`
 
 ### Launch meteor
 
+```
 export ROOT_URL='http://makeitdev.meteor.com:3000'; meteor
+```

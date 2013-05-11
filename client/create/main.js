@@ -12,6 +12,11 @@ stripHashTags = function (text) {
   return text.replace(tagRegexp, '').trim();
 };
 
+// Get cursor score
+getCursorScore = function (cursor) {
+  return $('[data-type=' + cursor + '] i').not('.empty').length;
+};
+
 Template.create.events({
   'keyup [name=task]': function (event) {
     if (event.keyCode !== 13) // 13 = enter
@@ -22,12 +27,21 @@ Template.create.events({
 
     // Insert task
     Tasks.insert({
+      user: Meteor.user()._id,
       text: stripHashTags(text),
       tags: extractHashTags(text),
+      satisfaction: getCursorScore('satisfaction'),
+      difficulty: getCursorScore('difficulty'),
       done: false
     });
 
     // Clear input
     $target.val('');
+  },
+
+  'click .cursor i': function (event) {
+    var $target = $(event.target);
+    $target.prevAll().andSelf().removeClass('empty');
+    $target.nextAll().addClass('empty');
   }
 });

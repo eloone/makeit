@@ -10,4 +10,9 @@ Template.list.events({
 });
 
 // Exports tasks list
-Template.list.tasks = Tasks.find();
+Template.list.tasks = function () {
+  if (! Meteor.user())
+    return ;
+
+  return Tasks.find({user: Meteor.user()._id});
+};

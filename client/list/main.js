@@ -1,0 +1,1 @@
+Template.list.tasks = Tasks.find();

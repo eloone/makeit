@@ -59,15 +59,15 @@ body{
 }
 
 .task-extra .level .icon-bolt{
-    float:right;
+    float:left;
     margin-right:5px;
     padding-top:0;
 }
 
-.task-extra .icon-bolt:hover,
+/*.task-extra .icon-bolt:hover,
 .task-extra .icon-bolt:hover ~ .icon-bolt{
     color:black;
-}
+}*/
 
 .task-creator .task-extra .icon-heart{
     font-size:18px;
@@ -75,13 +75,13 @@ body{
 }
 
 .task-creator .likeness .icon-heart{
-    float:right;
+    float:left;
 }
 
-.task-extra .icon-heart:hover,
+/*.task-extra .icon-heart:hover,
 .task-extra .icon-heart:hover ~ .icon-heart{
     color:black;
-}
+}*/
 
 .task-creator .task-extra .icon-calendar{
     padding:0;
@@ -89,5 +89,9 @@ body{
 }
 
 .task-creator .task-extra .icon-calendar:hover{
+    color:black;
+}
+
+.task-extra .cursor.checked, .task-extra .cursor.hover{
     color:black;
 }

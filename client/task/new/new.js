@@ -14,7 +14,7 @@ stripHashTags = function (text) {
 
 // Get cursor score
 getCursorScore = function (cursor) {
-  return $('[data-type=' + cursor + '] i').not('.empty').length;
+  return $('[data-type=' + cursor + '] .cursor.checked').length;
 };
 
 Template['new-task'].events({
@@ -37,11 +37,23 @@ Template['new-task'].events({
 
     // Clear input
     $target.val('');
+    //Clear cursors
+    $('.task-creator .cursor').removeClass('checked');
+    
   },
 
-  'click .cursor i': function (event) {
+  'click .cursor': function (event) {
     var $target = $(event.target);
-    $target.prevAll().andSelf().removeClass('empty');
-    $target.nextAll().addClass('empty');
+    $target.prevAll().andSelf().addClass('checked');
+    $target.nextAll().removeClass('checked');
+  },
+  'mouseenter .cursor': function(event){
+    var $target = $(event.target);
+    $target.prevAll().andSelf().addClass('hover');
+    $target.nextAll().removeClass('hover');
+  },
+  'mouseleave .cursor': function(event){
+    var $target = $(event.target);
+    $target.siblings().andSelf().removeClass('hover');
   }
 });

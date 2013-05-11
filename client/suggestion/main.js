@@ -24,9 +24,11 @@ Template.suggestions.tasks = function () {
     }
   });
 
-  // Return the first element of the disliked short tasks
-  if (tasks_short_disliked.length !== 0) {
-    tasks_suggested.push(tasks_short_disliked[0]);
+
+  
+  // Return the first element of the short liked tasks
+  if (tasks_short_liked.length !== 0) {
+    tasks_suggested.push(tasks_short_liked[0]);
   }
 
   // Return the first element of the long liked tasks
@@ -34,14 +36,14 @@ Template.suggestions.tasks = function () {
     tasks_suggested.push(tasks_long_liked[0]);
   }
 
+  // Return the first element of the disliked short tasks
+  if (tasks_short_disliked.length !== 0) {
+    tasks_suggested.push(tasks_short_disliked[0]);
+  }
+
   // Return the first element of the disliked long tasks
   if (tasks_long_disliked.length !== 0) {
     tasks_suggested.push(tasks_long_disliked[0]);
-  }
-  
-  // Return the first element of the short liked tasks
-  if (tasks_short_liked.length !== 0) {
-    tasks_suggested.push(tasks_short_liked[0]);
   }
 
   return tasks_suggested;

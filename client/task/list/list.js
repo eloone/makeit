@@ -8,7 +8,9 @@ getTasks = function (done) {
   if (Session.get('tag'))
     query.tags = Session.get('tag');
 
-  return Tasks.find(query);
+  // Sort first by decreasing satisfaction then increasing difficulty 
+  // Easy and short first
+  return Tasks.find(query, {sort: {satisfaction: -1, difficulty: 1}});
 };
 
 // Exports tasks list

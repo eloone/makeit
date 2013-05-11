@@ -1,7 +1,10 @@
 <template name="listTag">
-  <ul>
-  {{#each tags}}
-    <li>{{text}}</li>
-  {{/each}}
-  </ul>
+  <div id="listTag">
+    <div class="label">Show:</div>
+    <ul>
+      {{#each tags}}
+        <li>{{text}} - <span class="count">({{count}})</span></li>
+      {{/each}}
+    </ul>
+  </div>
 </template>

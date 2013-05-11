@@ -1,8 +1,6 @@
 // Login to website
 login = function () {
-  Meteor.loginWithFacebook({
-    requestPermissions: ['email']
-  }, function (err) {
+  Meteor.loginWithFacebook({}, function (err) {
     if (err)
       Session.set('errorMessage', err.reason || 'Unknown error');
   });

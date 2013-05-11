@@ -1,3 +1,4 @@
 <template name="login">
   <button type="button">Facebook Connect</button>
+  {{#if currentUser}}<div>Bonjour {{currentUser.profile.name}}</div>{{/if}}
 </template>

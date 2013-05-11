@@ -4,7 +4,8 @@ Template.create.events({
       return true;
 
     Tasks.insert({
-      text: $(event.target).val()
+      text: $(event.target).val(),
+      done: false
     });
   }
 });

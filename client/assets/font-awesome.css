@@ -3,7 +3,7 @@
  *  the iconic font designed for Bootstrap
  *  -------------------------------------------------------
  *  The full suite of pictographic icons, examples, and documentation
- *  can be found at: http://fontawesome.io
+ *  can be found at: http/fontawesome.io
  *
  *  License
  *  -------------------------------------------------------
@@ -14,7 +14,7 @@
  *  - Font Awesome documentation licensed under CC BY 3.0 License -
  *    http://creativecommons.org/licenses/by/3.0/
  *  - Attribution is no longer required in Font Awesome 3.0, but much appreciated:
- *    "Font Awesome by Dave Gandy - http://fontawesome.io"
+ *    "Font Awesome by Dave Gandy - http/fontawesome.io"
 
  *  Contact
  *  -------------------------------------------------------
@@ -26,8 +26,8 @@
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../font/fontawesome-webfont.eot?v=3.1.0');
-  src: url('../font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), url('../font/fontawesome-webfont.woff?v=3.1.0') format('woff'), url('../font/fontawesome-webfont.ttf?v=3.1.0') format('truetype'), url('../font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+  src: url('/font/fontawesome-webfont.eot?v=3.1.0');
+  src: url('/font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), url('/font/fontawesome-webfont.woff?v=3.1.0') format('woff'), url('/font/fontawesome-webfont.ttf?v=3.1.0') format('truetype'), url('/font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
   font-weight: normal;
   font-style: normal;
 }

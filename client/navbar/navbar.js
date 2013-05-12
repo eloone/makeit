@@ -4,7 +4,7 @@ Template.navbar.avatar = function () {
 };
 
 Template.navbar.tag = function(){
-  return Session.get('tag');
+  return Session.get('tag') || 'All';
 };
 
 Template.navbar.count_done = function(){

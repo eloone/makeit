@@ -9,9 +9,10 @@
 
 .tag-list li{
   list-style-type: none;
-  background:#EEE;
+  background: white;
   margin-bottom: 2px;
   position: relative;
+  border: 1px solid #eee;
 }
 
 .tag-list .tag{
@@ -43,10 +44,6 @@
   padding: 5px;
 }
 
-.tag-list li{
-  opacity:0.4;
-}
-
-.tag-list li.current{
-  opacity:1;
+.tag-list li.current .progress{
+  background:#DBF7C1;
 }

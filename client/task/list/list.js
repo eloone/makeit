@@ -86,10 +86,17 @@ Template['task-list'].doneTasks = function () {
 
 Template['task-list'].events({
   'click li': function (event) {
-    var $target = $(event.currentTarget);
+    var $target = $(event.target),
+        $currentTarget = $(event.currentTarget);
+
+    if ($target.is('a')) {
+      event.preventDefault();
+      window.open($target.attr('href'));
+      return false;
+    }
 
     // Update task (done/undone)
-    Tasks.update({_id: $target.data('id')}, {$set: {done: ! $target.hasClass('done')}});
+    Tasks.update({_id: $currentTarget.data('id')}, {$set: {done: ! $currentTarget.hasClass('done')}});
 
     checkAward();
   }

@@ -14,8 +14,22 @@
   color: #fff;
 }
 
+.task-list li a {
+  color: #fff;
+}
+
 .task-list li:hover, .task-list .done {
   background: #206587;
+}
+
+.task-list li .infos {
+  float: right;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.task-list li .infos a {
+  color: #222;
 }
 
 .task-list .done {

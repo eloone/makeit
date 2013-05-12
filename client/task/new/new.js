@@ -29,15 +29,25 @@ getSuggestions = function (tags) {
       case 'roma':
       text = 'Oh you are going to Roma ? Here are some things you might want to check:';
       tasks = tasks.concat([
-        'Buy tickets',
-        'Booking Hotel',
-        'Prepare visits'
+          {
+            text: 'Buy tickets',
+            info: '<a class="btn btn-mini" href="http://www.easyjet.com/"><i class="icon-plane"></i> Book your flight with EasyJet.com</a>'
+          },
+          {
+            text: 'Booking hotel',
+            info: '<a class="btn btn-mini" href="http://www.hotels.com/"><i class="icon-briefcase"></i> Book your hotel with Hotels.com</a>'
+          },
+          {
+            text: 'Prepare visits',
+            info: '<a class="btn btn-mini" href="http://goo.gl/maps/kiK6P"><i class="icon-map-marker"></i> Explore on Google Map</a>'
+          }
         ]);
     }
 
     // Append tag
-    tasks = _.map(tasks, function (suggestion) {
-      return suggestion + ' #' + tag;
+    tasks = _.map(tasks, function (task) {
+      task.text = task.text + ' #' + tag;
+      return task;
     });
 
     if (text)
@@ -114,7 +124,10 @@ Template['new-task'].events({
 
   'click .task-list li': function (event) {
     var $target = $(event.currentTarget);
-    addTask({text: $target.data('text')});
+    addTask({
+      text: $target.data('text'),
+      info: $target.find('[name=info]').html()
+    });
     $target.addClass('added').fadeOut();
 
     // Remove if no more suggestions
@@ -157,5 +170,5 @@ Template['new-task'].events({
         Session.set('likeness_tooltip', null);
     }
   }
-  
+
 });

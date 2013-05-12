@@ -11,7 +11,10 @@
  {{/if}}
   <ul class="task-list">
   {{#each tasks}}
-    <li data-id='{{_id}}'><i class="icon-check-empty"></i> {{text}}</li>
+    <li data-id='{{_id}}'>
+      <span class="title"><i class="icon-check-empty"></i> {{text}}</span>
+      <div class="infos">{{{info}}}</div>
+    </li>
   {{/each}}
   </ul>
   <ul class="task-list">

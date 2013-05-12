@@ -1,29 +1,27 @@
 <head>
   <title>Make it</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,300' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
   {{#if currentUser}}
   <div class="container">
     {{> navbar}}
-    <div class="side-pane">
-        <div class="list-tags">
-            {{> tag-list}}
-        </div>
-    </div>
-    <div class="main-pane">
-        <div class="header"></div>
-        <div class="task-creator">
-             {{> new-task}}
-            <div class="points">
-
-            </div>
-        </div>
-        <div class="tasks-lister">
-             {{> task-list}}
-        </div>
+    <div class="row-fluid">
+      <div class="span3">
+          <div class="list-tags">
+              {{> tag-list}}
+          </div>
+      </div>
+      <div class="span9">
+          <div class="task-creator">
+               {{> new-task}}
+          </div>
+          <div class="tasks-lister">
+               {{> task-list}}
+          </div>
+      </div>
     </div>
   </div>
   {{else}}

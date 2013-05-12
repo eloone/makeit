@@ -78,7 +78,7 @@ addTask = function (options) {
 detectSmartTask = function (task) {
   if (task.text.match(/call/i)) {
     var phone = task.text.match(/06[\s\d]+/);
-    task.info = '<a class="btn btn-mini" href="tel:' + phone + '">Appeler ' + phone + '</a>';
+    task.info = '<a class="btn btn-mini" href="tel:' + phone + '">Call ' + phone + '</a>';
   }
 
   return task;

@@ -103,8 +103,14 @@ Template['new-task'].events({
     // Active tooltip
     if (!! text)
       $('i').tooltip();
-    else
+    else {
+      $('.cursor')
+      .removeClass('checked')
+      .filter(':first-child').addClass('checked');
+
       $('i').tooltip('destroy');
+    }
+
 
     // After we click on enter
     if (event.keyCode !== 13) // 13 = enter

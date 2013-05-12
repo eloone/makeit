@@ -8,25 +8,26 @@
   {{#if currentUser}}
   <div class="container">
     {{> navbar}}
-    <div class="side-pane">
-        <div class="list-tags">
-            {{> tag-list}}
-        </div>
-        <div class="suggestions">
-            {{> suggestions}}
-        </div>
-    </div>
-    <div class="main-pane">
-        <div class="header"></div>
-        <div class="task-creator">
-             {{> new-task}}
-            <div class="points">
+    <div class="row-fluid">
+      <div class="span3">
+          <div class="list-tags">
+              {{> tag-list}}
+          </div>
+          <div class="suggestions">
+              {{> suggestions}}
+          </div>
+      </div>
+      <div class="span9">
+          <div class="task-creator">
+               {{> new-task}}
+              <div class="points">
 
-            </div>
-        </div>
-        <div class="tasks-lister">
-             {{> task-list}}
-        </div>
+              </div>
+          </div>
+          <div class="tasks-lister">
+               {{> task-list}}
+          </div>
+      </div>
     </div>
   </div>
   {{else}}

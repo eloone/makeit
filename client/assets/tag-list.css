@@ -1,40 +1,44 @@
-.list-tags ul{
-    margin: 0;
-    padding: 0;
+.tag-list {
+  margin-bottom: 20px;
 }
 
-.list-tags li{
-    list-style-type: none;
-    background:#EEE;
-    margin-bottom: 2px;
-    position: relative;
+.tag-list ul{
+  margin: 0;
+  padding: 0;
 }
 
-.list-tags .tag{
-    position: relative;
-    z-index: 1;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
+.tag-list li{
+  list-style-type: none;
+  background:#EEE;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.tag-list .tag{
+  position: relative;
+  z-index: 1;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
 
 }
 
-.list-tags .progress{
-    display:block;
-    position: absolute;
-    top:0;
-    left: 0;
-    bottom: 0;
-    text-align: right;
-    height:100%;
-    border-radius: 0;
-    background: #DCEDF2;
+.tag-list .progress{
+  display:block;
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 0;
+  text-align: right;
+  height:100%;
+  border-radius: 0;
+  background: #DCEDF2;
 }
 
-.list-tags .count{
-    border-radius:50px;
-    background: #43ACCC;
-    color: white;
-    font-weight:bold;
-    padding: 5px;
+.tag-list .count{
+  border-radius:50px;
+  background: #43ACCC;
+  color: white;
+  font-weight:bold;
+  padding: 5px;
 }

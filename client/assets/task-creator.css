@@ -1,5 +1,5 @@
 .task-creator{
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .task-creator input[name='task'] {
@@ -7,82 +7,71 @@
   line-height: 45px;
   height: 45px;
   border-radius: 0;
-  width: 95%;
-  margin: 0 auto;
-  display: block;
+  float: left;
 }
 
-.task-creator .task-extra{
-    float:right;
-    width:13%;
-    margin-top: -5px;
-    position: relative;
-    height:80px;
+.task-creator .task-extra {
+  float: left;
+  width: 100px;
+  margin-top: -5px;
+  position: relative;
+  height:80px;
 }
 
-.task-creator .task-extra .extra{
-    float: left;
-    cursor:pointer;
+@media (max-width: 767px) {
+  .task-creator .task-extra {
+    float: none;
+    margin: 0 auto;
+  }
 }
 
-.task-creator .task-extra i{
-    font-size:2.1em;
-    padding:5px;
+.task-creator .task-extra .extra {
+  float: left;
+  cursor: pointer;
 }
 
-.task-extra .extra-set{
-    float:left;
+.task-creator .task-extra i {
+  font-size: 2.1em;
+  padding: 5px;
 }
 
 .task-extra .icon-bolt{
-    color:#eee;
+  color:#eee;
 }
 
 .task-extra .level .icon-bolt{
-    float:left;
-    margin-right:5px;
-    padding-top:0;
-    padding-bottom: 0;
+  float:left;
+  margin-right:5px;
+  padding-top:0;
+  padding-bottom: 0;
 }
 
 .task-creator .task-extra .icon-heart{
-    font-size:18px;
-    color:#eee;
-}
-
-.task-creator .likeness .icon-heart{
-    float:left;
-}
-
-.task-creator .task-extra .icon-calendar{
-    padding:0;
-    color:#eee;
-    position: absolute;
-    bottom: 20px;
-    right: 10px;
+  font-size:18px;
+  color:#eee;
 }
 
 .task-creator .task-extra .icon-calendar.hover{
-    color:black;
+  color:black;
 }
 
 .task-extra .cursor.checked, .task-extra .cursor.hover{
-    color:black;
+  color: black;
 }
 
 .task-creator .likeness_tooltip,
 .task-creator .difficulty_tooltip{
-    font-size: 14px;
-    display:block;
-    width:100px;
-    float:left;
-    margin-left: 5px;
+  font-size: 14px;
+  display: block;
+  width: 100px;
+  float: left;
+  margin-left: 5px;
 }
 
 .task-creator .likeness_tooltip{
-    margin-top: -20px;
+  margin-top: -20px;
 }
 
 .task-creator .difficulty_tooltip{
-    clear:left;
+  clear:left;
 }

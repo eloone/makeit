@@ -1,12 +1,12 @@
 <template name="tag-list">
+  <div class="tag-list">
     <ul>
       {{#each tags}}
         <li>
-            <a title="{{progress}}%" class="tag" href="#/tag/{{text}}">{{label}}  
-                <span class="count">{{count}}</span>               
-            </a>
-            <span title="{{progress}}%" style="width:{{progress}}%;" class="progress"></span>
+          <a title="{{progress}}%" class="tag" href="#/tag/{{text}}"><span class="count">{{count}}</span> {{label}}</a>
+          <span title="{{progress}}%" style="width:{{progress}}%;" class="progress"></span>
         </li>
       {{/each}}
     </ul>
+  </div>
 </template>

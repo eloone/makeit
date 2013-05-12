@@ -1,23 +1,24 @@
 <template name="new-task">
-  <input placeholder="Make it happen !" type="text" name="task">
-  <div class="task-extra" style="display:none">
+  <div class="row-fluid">
+    <input placeholder="Make it happen !" type="text" name="task" class="span10">
+    <div class="task-extra span2">
       {{#if likeness_tooltip}}
         <span class="likeness_tooltip">{{likeness_tooltip}}</span>
       {{/if}}
       <span data-type="satisfaction" class="extra-set likeness">
-          <i data-title="nice" class="trigger cursor extra icon-heart"></i>
-          <i data-title="great" class="trigger cursor extra icon-heart"></i>
-          <i data-title="i love it" class="trigger cursor extra icon-heart"></i>
+        <i data-title="nice" class="trigger cursor extra icon-heart"></i>
+        <i data-title="great" class="trigger cursor extra icon-heart"></i>
+        <i data-title="i love it" class="trigger cursor extra icon-heart"></i>
       </span>
-    <span data-type="difficulty" class="extra-set level">
-        <i data-title="easy" class="trigger cursor extra icon-bolt"></i>
-        <i data-title="possible" class="trigger cursor extra icon-bolt"></i>
-        <i data-title="so hardcore" class="trigger cursor extra icon-bolt"></i>
-    </span>
-    {{#if difficulty_tooltip}}
+      <span data-type="difficulty" class="extra-set level">
+          <i data-title="easy" class="trigger cursor extra icon-bolt"></i>
+          <i data-title="possible" class="trigger cursor extra icon-bolt"></i>
+          <i data-title="so hardcore" class="trigger cursor extra icon-bolt"></i>
+      </span>
+      {{#if difficulty_tooltip}}
         <span class="difficulty_tooltip">{{difficulty_tooltip}}</span>
-    {{/if}}
-    <i class="trigger extra-set extra icon-calendar"></i>
+      {{/if}}
+    </div>
   </div>
   {{#if suggestions}}
   <div class="suggestions">

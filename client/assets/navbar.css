@@ -1,0 +1,43 @@
+.navbar {
+  margin-top: 10px;
+}
+
+.navbar-inner {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6f1f7;
+}
+
+.navbar .home {
+  float: left;
+}
+
+.navbar .infos {
+  float: right;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 5px;
+}
+
+.navbar .user {
+  float: right;
+}
+
+.navbar .user img {
+  width: 32px;
+  float: left;
+  margin: 5px;
+}
+
+.sur-header{
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding:10px;
+}
+
+.logout{
+    float: left;
+}

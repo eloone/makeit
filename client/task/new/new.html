@@ -19,6 +19,7 @@
     {{/if}}
     <i class="trigger extra-set extra icon-calendar"></i>
   </div>
+  {{#if suggestions}}
   <div class="suggestions">
     {{#each suggestions}}
     <h2>{{text}}</h2>
@@ -29,4 +30,5 @@
     </ul>
     {{/each}}
   </div>
+  {{/if}}
 </template>

@@ -1,0 +1,15 @@
+<template name="navbar">
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="home">
+          <img src="/images/small-logo.png" height="50" width="111">
+        </div>
+        <div class="user">
+          <img src="{{avatar}}" width="50" height="50">
+          <div class="infos">Hello {{currentUser.profile.name}}<br><a class="logout" href="#" class="logout">logout</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

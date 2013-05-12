@@ -31,14 +31,20 @@ getSuggestions = function (tags) {
       tasks = tasks.concat([
           {
             text: 'Buy tickets',
+            difficulty: 1,
+            satisfaction: 1,
             info: '<a class="btn btn-mini" href="http://www.easyjet.com/"><i class="icon-plane"></i> Book your flight with EasyJet.com</a>'
           },
           {
             text: 'Booking hotel',
+            difficulty: 2,
+            satisfaction: 2,
             info: '<a class="btn btn-mini" href="http://www.hotels.com/"><i class="icon-briefcase"></i> Book your hotel with Hotels.com</a>'
           },
           {
             text: 'Prepare visits',
+            difficulty: 3,
+            satisfaction: 2,
             info: '<a class="btn btn-mini" href="http://goo.gl/maps/kiK6P"><i class="icon-map-marker"></i> Explore on Google Map</a>'
           }
         ]);
@@ -146,6 +152,8 @@ Template['new-task'].events({
     var $target = $(event.currentTarget);
     addTask({
       text: $target.data('text'),
+      difficulty: $target.data('difficulty'),
+      satisfaction: $target.data('satisfaction'),
       info: $target.find('[name=info]').html()
     });
 

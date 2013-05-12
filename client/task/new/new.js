@@ -73,15 +73,6 @@ addTask = function (options) {
   }));
 };
 
-
-Template['new-task'].difficulty_tooltip = function(){
-    return Session.get('difficulty_tooltip');
-};
-
-Template['new-task'].likeness_tooltip = function(){
-    return Session.get('likeness_tooltip');
-};
-
 Template['new-task'].suggestions = function () {
   return Session.get('suggestions');
 };
@@ -94,6 +85,15 @@ Template['new-task'].events({
 
     //Set suggestions
     Session.set('suggestions', getSuggestions(tags));
+
+    // Active task-creator
+    $('.task-creator').toggleClass('active', !! text);
+
+    // Active tooltip
+    if (!! text)
+      $('i').tooltip();
+    else
+      $('i').tooltip('destroy');
 
     // After we click on enter
     if (event.keyCode !== 13) // 13 = enter
@@ -114,9 +114,6 @@ Template['new-task'].events({
   },
 
   'click .cursor': function (event) {
-    if(! $('input[name="task"]').val())
-      return ;
-
     $(event.target).prevAll().andSelf().addClass('checked');
     $(event.target).nextAll().removeClass('checked');
   },
@@ -127,47 +124,12 @@ Template['new-task'].events({
       text: $target.data('text'),
       info: $target.find('[name=info]').html()
     });
+
     $target.addClass('added').fadeOut();
 
     // Remove if no more suggestions
     if (! $target.parents('ul').find('li').not('.added').length)
       Session.set('suggestions', null);
-  },
-
-  'mouseleave .trigger': function(event){
-    var $target = $(event.target);
-    $target.siblings().andSelf().removeClass('hover');
-    Session.set('difficulty_tooltip', null);
-    Session.set('likeness_tooltip', null);
-  },
-  'mouseenter .trigger' : function(event){
-    var $target = $(event.target);
-    if($('input[name="task"]').val() != ''){
-        $target.prevAll().andSelf().addClass('hover');
-        $target.nextAll().removeClass('hover');
-        $target.css('cursor', 'pointer');
-
-        if($target.hasClass('cursor')){
-            if($target.hasClass('icon-heart')){
-                Session.set('likeness_tooltip', $target.data('title'));
-            }
-            else{
-                Session.set('likeness_tooltip', null);
-            }
-             if($target.hasClass('icon-bolt')){
-                Session.set('difficulty_tooltip', $target.data('title'));
-            }
-            else{
-                Session.set('difficulty_tooltip', null);
-            }
-        }
-
-    }
-    else{
-        $target.css('cursor', 'default');
-        Session.set('difficulty_tooltip', null);
-        Session.set('likeness_tooltip', null);
-    }
   }
 
 });

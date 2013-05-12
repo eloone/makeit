@@ -25,12 +25,8 @@
   }
 }
 
-.task-creator .task-extra .extra {
+.task-creator .task-extra .cursor {
   float: left;
-  cursor: pointer;
-}
-
-.task-extra i {
   font-size: 2.1em;
   padding: 5px;
 }
@@ -49,23 +45,10 @@
   font-size: 18px;
 }
 
-.task-extra .cursor.checked, .task-extra .cursor.hover{
+.task-creator.active .task-extra .cursor{
+  cursor: pointer;
+}
+
+.task-creator.active .task-extra .cursor.checked, .task-creator.active .task-extra .cursor:hover{
   color: #206587;
-}
-
-.task-creator .tip {
-  color: #206587;
-  font-size: 14px;
-  display: block;
-  width: 100px;
-  float: left;
-  margin-left: 5px;
-}
-
-.task-creator .satisfaction-tip{
-  margin-top: -20px;
-}
-
-.task-creator .difficulty-tip{
-  clear: left;
 }

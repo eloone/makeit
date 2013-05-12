@@ -19,7 +19,7 @@
 }
 
 .task-list li:hover, .task-list .done {
-  background: ##206587;
+  background: #206587;
 }
 
 .task-list li .infos {

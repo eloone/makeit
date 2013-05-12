@@ -65,15 +65,6 @@ getSuggestedTasks = function(){
   return tasks_suggested;
 };
 
-Template['task-list'].suggested = function(){
-   var suggested_tasks = getSuggestedTasks();
-   if(suggested_tasks.length){
-       return {tasks : suggested_tasks};
-   }
-
-   return null;
-};
-
 // Exports tasks list
 Template['task-list'].tasks = function () {
   return getTasks(false);

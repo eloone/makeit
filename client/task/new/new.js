@@ -74,11 +74,18 @@ addTask = function (options) {
   }));
 };
 
+// Reset the cursors
+resetCursors = function () {
+  $('.cursor')
+      .removeClass('checked')
+      .filter(':first-child').addClass('checked');
+};
+
 // Add a smart task
 detectSmartTask = function (task) {
   if (task.text.match(/call/i)) {
     var phone = task.text.match(/06[\s\d]+/);
-    task.info = '<a class="btn btn-mini" href="tel:' + phone + '">Appeler ' + phone + '</a>';
+    task.info = '<a class="btn btn-mini" href="tel:' + phone + '">Call ' + phone + '</a>';
   }
 
   return task;
@@ -103,8 +110,10 @@ Template['new-task'].events({
     // Active tooltip
     if (!! text)
       $('i').tooltip();
-    else
+    else {
       $('i').tooltip('destroy');
+      resetCursors();
+    }
 
     // After we click on enter
     if (event.keyCode !== 13) // 13 = enter
@@ -122,9 +131,10 @@ Template['new-task'].events({
 
     // Clear input
     $target.val('');
+    resetCursors();
 
-    //Clear cursors
-    $('.task-creator .cursor').removeClass('checked');
+    // Active task-creator
+    $('.task-creator').removeClass('active');
   },
 
   'click .cursor': function (event) {

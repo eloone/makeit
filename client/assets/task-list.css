@@ -46,3 +46,23 @@
     color:#777;
     font-size:18px;
 }
+
+.task-list .icon-heart {
+  color: #cf0404;
+}
+
+.task-list .icon-bolt {
+  color: #0e3c4f;
+}
+
+.level-0, .level-1 {
+  opacity: 0.3;
+}
+
+.level-2 {
+  opacity: 0.6;
+}
+
+.level-3 {
+  opacity: 0.9;
+}

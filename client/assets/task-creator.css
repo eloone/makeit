@@ -30,37 +30,31 @@
   cursor: pointer;
 }
 
-.task-creator .task-extra i {
+.task-extra i {
   font-size: 2.1em;
   padding: 5px;
 }
 
-.task-extra .icon-bolt{
-  color:#eee;
+.task-extra .icon-bolt, .task-extra .icon-heart{
+  color: #eee;
 }
 
 .task-extra .level .icon-bolt{
-  float:left;
-  margin-right:5px;
-  padding-top:0;
-  padding-bottom: 0;
+  float: left;
+  margin: 0;
+  padding: 0 5px;
 }
 
 .task-creator .task-extra .icon-heart{
-  font-size:18px;
-  color:#eee;
-}
-
-.task-creator .task-extra .icon-calendar.hover{
-  color:black;
+  font-size: 18px;
 }
 
 .task-extra .cursor.checked, .task-extra .cursor.hover{
-  color: black;
+  color: #206587;
 }
 
-.task-creator .likeness_tooltip,
-.task-creator .difficulty_tooltip{
+.task-creator .tip {
+  color: #206587;
   font-size: 14px;
   display: block;
   width: 100px;
@@ -68,10 +62,10 @@
   margin-left: 5px;
 }
 
-.task-creator .likeness_tooltip{
+.task-creator .satisfaction-tip{
   margin-top: -20px;
 }
 
-.task-creator .difficulty_tooltip{
-  clear:left;
+.task-creator .difficulty-tip{
+  clear: left;
 }

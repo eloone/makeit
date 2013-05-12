@@ -3,7 +3,7 @@
     <input placeholder="Make it happen !" type="text" name="task" class="span10">
     <div class="task-extra span2">
       {{#if likeness_tooltip}}
-        <span class="likeness_tooltip">{{likeness_tooltip}}</span>
+        <span class="tip satisfaction-tip">{{likeness_tooltip}}</span>
       {{/if}}
       <span data-type="satisfaction" class="extra-set likeness">
         <i data-title="nice" class="trigger cursor extra icon-heart"></i>
@@ -16,7 +16,7 @@
           <i data-title="so hardcore" class="trigger cursor extra icon-bolt"></i>
       </span>
       {{#if difficulty_tooltip}}
-        <span class="difficulty_tooltip">{{difficulty_tooltip}}</span>
+        <span class="tip difficulty-tip">{{difficulty_tooltip}}</span>
       {{/if}}
     </div>
   </div>

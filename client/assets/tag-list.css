@@ -42,3 +42,11 @@
   font-weight:bold;
   padding: 5px;
 }
+
+.tag-list li{
+  opacity:0.4;
+}
+
+.tag-list li.current{
+  opacity:1;
+}

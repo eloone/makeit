@@ -10,6 +10,6 @@ router = new (Backbone.Router.extend({
   },
 
   tag: function (tag) {
-    Session.set('tag', tag === 'all' ? null : tag);
+    Session.set('tag', tag === 'all' ? 'All' : tag);
   }
 }))();

@@ -2,7 +2,7 @@
   <div class="tag-list">
     <ul>
       {{#each tags}}
-        <li>
+        <li class="{{current}}">
           <a title="{{progress}}%" class="tag" href="#/tag/{{text}}"><span class="count">{{count}}</span> {{label}}</a>
           <span title="{{progress}}%" style="width:{{progress}}%;" class="progress"></span>
         </li>

@@ -44,7 +44,8 @@ getTags = function () {
     return _.extend(tag, {
       progress: Math.round(tag.done / tag.count * 100),
       complete: tag.done === tag.count,
-      difficultyAverage: Math.round(tag.difficulty / tag.count / 3 * 100) / 100
+      difficultyAverage: Math.round(tag.difficulty / tag.count / 3 * 100) / 100,
+      current: tag.text == 'all' ? 'current' : ''
     });
   });
 
@@ -73,3 +74,17 @@ Template['tag-list'].tags = function () {
 Template['tag-list'].label = function () {
   return this.text =='all'  ? "All items" : this.text;
 };
+
+Template['tag-list'].events({
+  
+  'click li' : function(event){
+    var $target = $(event.target);
+    if($target.is('a')){
+      $target.parent('li').addClass('current').siblings().removeClass('current');
+    }else{
+      $target.addClass('current').siblings().removeClass('current');
+    }
+    
+  }
+  
+});

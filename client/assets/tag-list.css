@@ -1,3 +1,8 @@
+.list-tags ul{
+    margin: 0;
+    padding: 0;
+}
+
 .list-tags li{
     list-style-type: none;
     background:#EEE;
@@ -32,4 +37,14 @@
     color: white;
     font-weight:bold;
     padding: 5px;
+}
+
+.list-tags .suggestion{
+   padding: 15px;
+   font-size: 25px;
+   color: #7B5587;
+   line-height: 35px;
+   text-align: center;
+   border:1px solid #7B5587;
+   cursor: pointer;
 }

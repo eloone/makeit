@@ -28,13 +28,13 @@ getSuggestedTasks = function(){
   var tasks_suggested = [];
 
   Tasks.find({user: Meteor.user()._id, done: false}).forEach(function (task) {
-    if (task.difficulty == 1 && task.satisfaction == 1) {
+    if (task.difficulty === 1 && task.satisfaction === 1) {
       tasks_short_disliked.push({text: task.text, _id : task._id});
     }
-    else if (task.difficulty > 1 && task.satisfaction == 1) {
+    else if (task.difficulty > 1 && task.satisfaction === 1) {
       tasks_long_disliked.push({text: task.text, _id : task._id});
     }
-    else if (task.difficulty == 1 && task.satisfaction > 1) {
+    else if (task.difficulty === 1 && task.satisfaction > 1) {
       tasks_short_liked.push({text: task.text, _id : task._id});
     }
     else {

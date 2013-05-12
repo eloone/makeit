@@ -4,32 +4,32 @@
 </head>
 
 <body>
-  {{#if currentUser}}
-    {{> user-infos}}
-    <div class="side-pane">
-        <div class="home">
-            <img src="/img/logo_makeit.jpg"/>
-        </div>
-        <div class="list-tags">
-            {{> tag-list}}
-        </div>
-        <div class="suggestions">
-            {{> suggestions}}
-        </div>
-    </div>
-    <div class="main-pane">
-        <div class="header"></div>
-        <div class="task-creator">
-             {{> new-task}}
-            <div class="points">
+        {{#if currentUser}}
+          {{> user-infos}}
+          <div class="side-pane">
+              <div class="home">
+                  <img src="/img/logo_makeit.jpg"/>
+              </div>
+              <div class="list-tags">
+                  {{> tag-list}}
+              </div>
+              <div class="suggestions">
+                  {{> suggestions}}
+              </div>
+          </div>
+          <div class="main-pane">
+              <div class="header"></div>
+              <div class="task-creator">
+                   {{> new-task}}
+                  <div class="points">
 
-            </div>
-        </div>
-        <div class="tasks-lister">
-             {{> task-list}}
-        </div>
-    </div>
-  {{else}}
-    {{> login}}
-  {{/if}}
+                  </div>
+              </div>
+              <div class="tasks-lister">
+                   {{> task-list}}
+              </div>
+          </div>
+        {{else}}
+          {{> login}}
+        {{/if}}
 </body>

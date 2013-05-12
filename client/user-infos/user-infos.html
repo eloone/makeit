@@ -1,5 +1,9 @@
 <template name="user-infos">
-  <img src="{{avatar}}" width="50" height="50">
-  <div>Hello {{currentUser.profile.name}}</div>
-  <div><a href="#" class="logout">Logout</a></div>
+    <div class="sur-header">
+        <div class="user">
+          <img src="{{avatar}}" width="50" height="50">
+          <div class="user-name">Hello {{currentUser.profile.name}}</div>
+        </div>
+        <a class="logout" href="#" class="logout">Logout</a>
+    </div>
 </template>

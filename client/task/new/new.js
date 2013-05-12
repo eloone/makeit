@@ -91,6 +91,6 @@ Template['new-task'].events({
         Session.set('difficulty_tooltip', null);
         Session.set('likeness_tooltip', null);
     }
-
   }
+  
 });

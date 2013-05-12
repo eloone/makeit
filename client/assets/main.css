@@ -3,20 +3,42 @@ body{
     padding:15px;
 }
 
+.user-name{
+    float:right;
+}
+
+.user{
+    float: left;
+}
+
+.user img{
+    width: 32px;
+    float: left;
+    margin-right: 10px;
+}
+
+.sur-header{
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.logout{
+    float: right;
+}
+
 .side-pane{
   float: left;
-  width: 10%;
+  width: 20%;
   margin-right: 15px;
 }
 
 .main-pane{
   float: left;
-  width: 88%;
+  width: 78%;
 }
 
 .side-pane .home{
-  height: 100px;
-  background: #eee;
+  text-align: center;
 }
 
 .main-pane .task-creator input[name='task']{
@@ -24,7 +46,6 @@ body{
   font-size: 24px;
   color: #777;
   border: 1px solid #eee;
-  border-radius: 10px;
   width:80%;
 }
 

@@ -70,7 +70,7 @@ Template['task-list'].suggested = function(){
    if(suggested_tasks.length){
        return {tasks : suggested_tasks};
    }
-   
+
    return null;
 };
 
@@ -98,6 +98,6 @@ Template['task-list'].events({
     // Update task (done/undone)
     Tasks.update({_id: $currentTarget.data('id')}, {$set: {done: ! $currentTarget.hasClass('done')}});
 
-    checkAward();
+    checkReward();
   }
 });

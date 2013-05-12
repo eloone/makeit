@@ -89,7 +89,7 @@ resetCursors = function () {
 
 // Add a smart task
 detectSmartTask = function (task) {
-  if (task.text.match(/call/i)) {
+  if (task.text.match(/call.*06/i)) {
     var phone = task.text.match(/06[\s\d]+/);
     task.info = '<a class="btn btn-mini" href="tel:' + phone + '">Call ' + phone + '</a>';
   }

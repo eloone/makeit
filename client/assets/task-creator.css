@@ -1,0 +1,83 @@
+.task-creator input[name='task'] {
+  font-size: 24px;
+  line-height: 45px;
+  height: 45px;
+  width: 80%;
+  border-radius: 0;
+  margin-bottom: 20px;
+}
+
+.task-creator .task-extra{
+    float:right;
+    width:13%;
+    margin-top: -5px;
+    position: relative;
+    height:80px;
+}
+
+.task-creator .task-extra .extra{
+    float: left;
+    cursor:pointer;
+}
+
+.task-creator .task-extra i{
+    font-size:2.1em;
+    padding:5px;
+}
+
+.task-extra .extra-set{
+    float:left;
+}
+
+.task-extra .icon-bolt{
+    color:#eee;
+}
+
+.task-extra .level .icon-bolt{
+    float:left;
+    margin-right:5px;
+    padding-top:0;
+    padding-bottom: 0;
+}
+
+.task-creator .task-extra .icon-heart{
+    font-size:18px;
+    color:#eee;
+}
+
+.task-creator .likeness .icon-heart{
+    float:left;
+}
+
+.task-creator .task-extra .icon-calendar{
+    padding:0;
+    color:#eee;
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+}
+
+.task-creator .task-extra .icon-calendar.hover{
+    color:black;
+}
+
+.task-extra .cursor.checked, .task-extra .cursor.hover{
+    color:black;
+}
+
+.task-creator .likeness_tooltip,
+.task-creator .difficulty_tooltip{
+    font-size: 14px;
+    display:block;
+    width:100px;
+    float:left;
+    margin-left: 5px;
+}
+
+.task-creator .likeness_tooltip{
+    margin-top: -20px;
+}
+
+.task-creator .difficulty_tooltip{
+    clear:left;
+}

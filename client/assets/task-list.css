@@ -1,0 +1,23 @@
+.task-list {
+  margin: 10px 0;
+  padding: 0;
+}
+
+.task-list li {
+  margin: 2px 0;
+  padding: 0 5px;
+  list-style-type: none;
+  background: #3a87ad;
+  line-height: 30px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.task-list li:hover, .task-list .done {
+  background: #206587;
+}
+
+.task-list .done {
+  color: #ccc;
+  text-decoration: line-through;
+}

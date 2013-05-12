@@ -1,0 +1,12 @@
+.suggestions .task-list li {
+  background: #4bafe0;
+}
+
+.suggestions .task-list li:hover {
+  background: #46a546;
+}
+
+.suggestions h2 {
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -1,0 +1,36 @@
+.login-box {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  background: #000 url('/images/bg.jpg');
+  background-position: center;
+}
+
+.login-box .logo {
+  position: absolute;
+  display: block;
+  width: 310px;
+  height: 330px;
+  left: 50%;
+  margin-left: -165px;
+  top: 20px;
+  background: url('/images/logo.png');
+  background-size: 310px 330px;
+}
+
+.login-box .logo span {
+  display: none;
+}
+
+.login-box .connect {
+  position: absolute;
+  display: block;
+  top: 360px;
+  left: 50%;
+  margin-left: -125px;
+  width: 250px;
+  height: 95px;
+  background: url('/images/connect.png');
+  background-size: 250px 95px;
+}

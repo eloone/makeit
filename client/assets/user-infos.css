@@ -1,0 +1,23 @@
+.user-name{
+    float:right;
+}
+
+.user{
+    float: left;
+}
+
+.user img{
+    width: 32px;
+    float: left;
+    margin-right: 10px;
+}
+
+.sur-header{
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding:10px;
+}
+
+.logout{
+    float: right;
+}

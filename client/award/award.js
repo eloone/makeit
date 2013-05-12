@@ -11,3 +11,4 @@ checkAward = function () {
   if (tag)
     alert('Award ! (difficulty: ' + tag.difficultyAverage + ')');
 };
+

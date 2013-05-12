@@ -1,7 +1,6 @@
 html, body {
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
   height: 100%;
 }
 
@@ -13,7 +12,7 @@ html, body {
   width: 100%;
   text-align: center;
   background: #000 url('/images/bg.jpg');
-  background-size: 100%;
+  background-position: center;
 }
 
 .login-box .logo {
@@ -21,10 +20,9 @@ html, body {
   display: block;
   width: 310px;
   height: 330px;
-  top: 50%;
   left: 50%;
   margin-left: -165px;
-  top: 50px;
+  top: 20px;
   background: url('/images/logo.png');
   background-size: 310px 330px;
 }
@@ -36,7 +34,7 @@ html, body {
 .login-box .connect {
   position: absolute;
   display: block;
-  top: 390px;
+  top: 360px;
   left: 50%;
   margin-left: -125px;
   width: 250px;
@@ -66,6 +64,45 @@ html, body {
 
 .logout{
     float: right;
+}
+
+/* Task list */
+.task-list {
+  margin: 0;
+  padding: 0;
+}
+
+.task-list li {
+  margin: 2px 0;
+  padding: 0 5px;
+  list-style-type: none;
+  background: #eee;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.task-list li:hover, .task-list .done {
+  background: #ccc;
+}
+
+.task-list .done {
+  text-decoration: line-through;
+}
+
+/* Suggestions */
+.suggestions .task-list li {
+  background: #3a87ad;
+  color: #fff;
+}
+
+.suggestions .task-list li:hover {
+  background: #46a546;
+}
+
+.suggestions h2 {
+  font-size: 18px;
+  font-weight: bold;
+>>>>>>> add suggestions
 }
 
 .side-pane{
@@ -157,29 +194,6 @@ html, body {
 
 .task-extra .cursor.checked, .task-extra .cursor.hover{
     color:black;
-}
-
-.task-list {
-  margin: 0;
-  padding: 0;
-}
-
-/* Task list */
-.task-list li {
-  margin: 2px 0;
-  padding: 0 5px;
-  list-style-type: none;
-  background: #eee;
-  line-height: 30px;
-  cursor: pointer;
-}
-
-.task-list li:hover, .task-list .done {
-  background: #ccc;
-}
-
-.task-list .done {
-  text-decoration: line-through;
 }
 
 .task-creator .likeness_tooltip,

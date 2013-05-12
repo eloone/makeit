@@ -12,11 +12,21 @@
     <span data-type="difficulty" class="extra-set level">
         <i data-title="easy" class="trigger cursor extra icon-bolt"></i>
         <i data-title="possible" class="trigger cursor extra icon-bolt"></i>
-        <i data-title="so hardcore" class="trigger cursor extra icon-bolt"></i>     
+        <i data-title="so hardcore" class="trigger cursor extra icon-bolt"></i>
     </span>
     {{#if difficulty_tooltip}}
         <span class="difficulty_tooltip">{{difficulty_tooltip}}</span>
     {{/if}}
     <i class="trigger extra-set extra icon-calendar"></i>
+  </div>
+  <div class="suggestions">
+    {{#each suggestions}}
+    <h2>{{text}}</h2>
+    <ul class="task-list">
+      {{#each tasks}}
+        <li data-text="{{.}}"><i class="icon-check-sign"></i> {{.}}</li>
+      {{/each}}
+    </ul>
+    {{/each}}
   </div>
 </template>

@@ -33,7 +33,7 @@ getTags = function () {
   });
 
   tags.unshift({
-    text: null,
+    text: 'all',
     count: taskCount,
     done: doneCount,
     difficulty: difficultyCount
@@ -71,5 +71,5 @@ Template['tag-list'].tags = function () {
 };
 
 Template['tag-list'].label = function () {
-  return this.text || "All items";
+  return this.text =='all'  ? "All items" : this.text;
 };

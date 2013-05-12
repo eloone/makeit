@@ -6,10 +6,10 @@ router = new (Backbone.Router.extend({
   },
 
   all: function () {
-    this.navigate('tag/null', {trigger: true});
+    this.navigate('tag/all', {trigger: true});
   },
 
   tag: function (tag) {
-    Session.set('tag', tag === 'null' ? null : tag);
+    Session.set('tag', tag === 'all' ? null : tag);
   }
 }))();

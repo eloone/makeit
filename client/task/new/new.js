@@ -117,9 +117,8 @@ Template['new-task'].events({
     if(! $('input[name="task"]').val())
       return ;
 
-    $(event.target)
-    .prevAll().andSelf().addClass('checked')
-    .end().nextAll().removeClass('checked');
+    $(event.target).prevAll().andSelf().addClass('checked');
+    $(event.target).nextAll().removeClass('checked');
   },
 
   'click .task-list li': function (event) {

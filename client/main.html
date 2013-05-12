@@ -5,31 +5,31 @@
 </head>
 
 <body>
+  {{#if currentUser}}
   <div class="container">
-    {{#if currentUser}}
-      {{> navbar}}
-      <div class="side-pane">
-          <div class="list-tags">
-              {{> tag-list}}
-          </div>
-          <div class="suggestions">
-              {{> suggestions}}
-          </div>
-      </div>
-      <div class="main-pane">
-          <div class="header"></div>
-          <div class="task-creator">
-               {{> new-task}}
-              <div class="points">
+    {{> navbar}}
+    <div class="side-pane">
+        <div class="list-tags">
+            {{> tag-list}}
+        </div>
+        <div class="suggestions">
+            {{> suggestions}}
+        </div>
+    </div>
+    <div class="main-pane">
+        <div class="header"></div>
+        <div class="task-creator">
+             {{> new-task}}
+            <div class="points">
 
-              </div>
-          </div>
-          <div class="tasks-lister">
-               {{> task-list}}
-          </div>
-      </div>
-    {{else}}
-      {{> login}}
-    {{/if}}
+            </div>
+        </div>
+        <div class="tasks-lister">
+             {{> task-list}}
+        </div>
+    </div>
   </div>
+  {{else}}
+    {{> login}}
+  {{/if}}
 </body>

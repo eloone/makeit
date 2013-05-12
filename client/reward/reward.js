@@ -12,7 +12,12 @@ checkReward = function () {
     return ;
 
   var modal = Meteor.render(function () {
-    return Template.reward();
+    switch(tag.text.toLowerCase()){
+      case 'roma':
+        return Template.reward_roma();
+      case 'family':
+        return Template.reward_family()
+    }
   });
 
   document.body.appendChild(modal);

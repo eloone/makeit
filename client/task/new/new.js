@@ -52,6 +52,7 @@ getSuggestions = function (tags) {
 
 addTask = function (options) {
   Tasks.insert(_.extend({
+    date: new Date(),
     user: Meteor.user()._id,
     tags: extractHashTags(options.text),
     satisfaction: 0,
@@ -77,12 +78,16 @@ Template['new-task'].suggestions = function () {
 
 Template['new-task'].events({
   'keyup [name=task]': function (event) {
-    if (event.keyCode !== 13) // 13 = enter
-      return true;
-
     var $target = $(event.target),
         text = $target.val(),
         tags = extractHashTags(text);
+
+    //Set suggestions
+    Session.set('suggestions', getSuggestions(tags));
+
+    // After we click on enter
+    if (event.keyCode !== 13) // 13 = enter
+      return true;
 
     // Insert task
     addTask({
@@ -96,9 +101,6 @@ Template['new-task'].events({
 
     //Clear cursors
     $('.task-creator .cursor').removeClass('checked');
-
-    //Set suggestions
-    Session.set('suggestions', getSuggestions(tags));
   },
 
   'click .cursor': function (event) {
@@ -113,7 +115,11 @@ Template['new-task'].events({
   'click .task-list li': function (event) {
     var $target = $(event.currentTarget);
     addTask({text: $target.data('text')});
-    $target.fadeOut();
+    $target.addClass('added').fadeOut();
+
+    // Remove if no more suggestions
+    if (! $target.parents('ul').find('li').not('.added').length)
+      Session.set('suggestions', null);
   },
 
   'mouseleave .trigger': function(event){

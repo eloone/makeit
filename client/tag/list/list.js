@@ -48,6 +48,15 @@ getTags = function () {
     });
   });
 
+  // Normalize values
+  _.map(tags, function (tag) {
+    return _.extend(tag, {
+      progress: tag.progress || 0,
+      complete: tag.done === tag.count,
+      difficultyAverage: tag.difficultyAverage || 0
+    });
+  });
+
   // Sort tags
   tags = _.sortBy(tags, function (tag) {
     return tag.text;

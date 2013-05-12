@@ -1,35 +1,38 @@
 <head>
   <title>Make it</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Quicksand' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
-        {{#if currentUser}}
-          {{> user-infos}}
-          <div class="side-pane">
-              <div class="home">
-                  <img src="/img/logo_makeit.jpg"/>
-              </div>
-              <div class="list-tags">
-                  {{> tag-list}}
-              </div>
-              <div class="suggestions">
-                  {{> suggestions}}
-              </div>
+  <div class="container">
+    {{#if currentUser}}
+      {{> user-infos}}
+      <div class="side-pane">
+          <div class="home">
+              <img src="/img/logo_makeit.jpg"/>
           </div>
-          <div class="main-pane">
-              <div class="header"></div>
-              <div class="task-creator">
-                   {{> new-task}}
-                  <div class="points">
+          <div class="list-tags">
+              {{> tag-list}}
+          </div>
+          <div class="suggestions">
+              {{> suggestions}}
+          </div>
+      </div>
+      <div class="main-pane">
+          <div class="header"></div>
+          <div class="task-creator">
+               {{> new-task}}
+              <div class="points">
 
-                  </div>
-              </div>
-              <div class="tasks-lister">
-                   {{> task-list}}
               </div>
           </div>
-        {{else}}
-          {{> login}}
-        {{/if}}
+          <div class="tasks-lister">
+               {{> task-list}}
+          </div>
+      </div>
+    {{else}}
+      {{> login}}
+    {{/if}}
+  </div>
 </body>

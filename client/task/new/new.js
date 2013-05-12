@@ -60,6 +60,7 @@ getSuggestions = function (tags) {
   return suggestions;
 };
 
+// Add a task
 addTask = function (options) {
   Tasks.insert(_.extend({
     date: new Date(),
@@ -71,6 +72,16 @@ addTask = function (options) {
   }, options, {
     text: stripHashTags(options.text)
   }));
+};
+
+// Add a smart task
+detectSmartTask = function (task) {
+  if (task.text.match(/call/i)) {
+    var phone = task.text.match(/06[\s\d]+/);
+    task.info = '<a class="btn btn-mini" href="tel:' + phone + '">Appeler ' + phone + '</a>';
+  }
+
+  return task;
 };
 
 Template['new-task'].suggestions = function () {
@@ -99,12 +110,15 @@ Template['new-task'].events({
     if (event.keyCode !== 13) // 13 = enter
       return true;
 
-    // Insert task
-    addTask({
+    // Detect smart-task
+    task = detectSmartTask({
       text: text,
       satisfaction: getCursorScore('satisfaction'),
       difficulty: getCursorScore('difficulty')
     });
+
+    // Insert task
+    addTask(task);
 
     // Clear input
     $target.val('');

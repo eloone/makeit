@@ -1,6 +1,6 @@
 // Check if the user has won a reward
-checkReward = function () {
-  var tags = getTags();
+checkReward = function (tags) {
+  var tags = getTags(tags);
 
   var tag = _.reduce(tags, function (memo, tag) {
     if (! memo && tag.complete)

@@ -1,5 +1,6 @@
 // Return tag list
-getTags = function () {
+getTags = function (filter) {
+
   var tags = [],
   taskCount = 0,
   doneCount = 0,
@@ -31,6 +32,11 @@ getTags = function () {
     doneCount = task.done ? doneCount + 1 : doneCount;
     difficultyCount += task.difficulty;
   });
+
+  if (_.isArray(filter))
+    tags = _.filter(tags, function (tag) {
+      return filter.indexOf(tag.text) >= 0;
+    });
 
   tags.unshift({
     text: 'all',
@@ -76,7 +82,7 @@ Template['tag-list'].label = function () {
 };
 
 Template['tag-list'].events({
-  
+
   'click li' : function(event){
     var $target = $(event.target);
     if($target.is('a')){
@@ -84,7 +90,7 @@ Template['tag-list'].events({
     }else{
       $target.addClass('current').siblings().removeClass('current');
     }
-    
+
   }
-  
+
 });

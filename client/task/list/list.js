@@ -86,9 +86,11 @@ Template['task-list'].events({
       return false;
     }
 
+    var task = Tasks.findOne({_id: $currentTarget.data('id')});
+
     // Update task (done/undone)
     Tasks.update({_id: $currentTarget.data('id')}, {$set: {done: ! $currentTarget.hasClass('done')}});
 
-    checkReward();
+    checkReward(task.tags);
   }
 });

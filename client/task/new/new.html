@@ -25,7 +25,12 @@
     <h2>{{text}}</h2>
     <ul class="task-list">
       {{#each tasks}}
-        <li data-text="{{.}}"><i class="icon-plus"></i> {{.}}</li>
+        <li data-text="{{text}}">
+          <i class="icon-plus"></i> {{text}}
+          <script type="text/html" name="info">
+          {{{info}}}
+          </script>
+        </li>
       {{/each}}
     </ul>
     {{/each}}

@@ -1,6 +1,7 @@
 .task-list {
   margin: 10px 0;
   padding: 0;
+  font-size: 18px;
 }
 
 .task-list li {
@@ -20,4 +21,14 @@
 .task-list .done {
   color: #ccc;
   text-decoration: line-through;
+}
+
+.suggestion{
+    border: 1px solid #eee;
+    padding: 15px;
+}
+
+.suggestion .title{
+    color:#777;
+    font-size:18px;
 }

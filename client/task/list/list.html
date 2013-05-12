@@ -1,4 +1,14 @@
 <template name="task-list">
+ {{#if suggested}} 
+    <div class="suggestion">
+         <p class="title">Here are some things you might feel like doing now :</p>
+         <ul class="task-list">
+           {{#each suggested.tasks}}
+             <li data-id='{{_id}}'><i class="icon-check-empty"></i> {{text}}</li>
+           {{/each}}
+         </ul>
+    </div>
+ {{/if}}
   <ul class="task-list">
   {{#each tasks}}
     <li data-id='{{_id}}'><i class="icon-check-empty"></i> {{text}}</li>

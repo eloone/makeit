@@ -1,6 +1,6 @@
 # Makeit
 
-A todo list that help you to acheive your dreams.
+A todo list that helps you achieve your dreams.
 
 Makeit was built during Paris Angelhack 2013 by a team of four persons :
 

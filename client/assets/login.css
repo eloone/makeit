@@ -3,8 +3,18 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  background: #000 url('/images/bg.jpg');
+  /*background: #000 url('/images/bg.jpg');*/
+  background:#FAF4C9;
   background-position: center;
+}
+
+.login-widget{
+  width:300px;
+  margin:0 auto;
+  background:white;
+  border-radius:10px;
+  padding:15px;
+  color:#225DC5;
 }
 
 .login-box .logo {
@@ -33,4 +43,69 @@
   height: 95px;
   background: url('/images/connect.png');
   background-size: 250px 95px;
+}
+
+#login-buttons-google{
+  margin:5px;
+  border:1px solid #3D7EF1;
+  padding:5px;
+  border-radius:5px;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+.login-button:hover{
+  color:#6498F3;
+}
+
+#login-buttons-image-google{
+  background:url(/images/google.svg) no-repeat;
+  background-size: 30px 30px;
+  width:30px;
+  height:30px;
+  float:left;
+}
+
+.sign-in-text-google{
+  margin-top:5px;
+  display:block;
+}
+
+.login-box input, .login-box textarea, .login-box .uneditable-input {
+  width: 270px;
+}
+
+#login-buttons-password{
+  width:105px;
+}
+
+#login-buttons-forgot-password{
+  width:110px;
+}
+
+.login-button{
+   border:1px solid #3D7EF1;
+   border-radius:5px;
+   padding:5px;
+   cursor:pointer;
+   margin:0 auto;
+}
+
+.additional-link-container{
+  overflow:hidden;
+  padding:10px;
+  cursor:pointer;
+}
+
+.additional-link{
+  margin:0 15px 0 15px;
+}
+
+.additional-link:hover{
+  color:#6498F3;
+}
+
+#back-to-login-link{
+  width:110px;
+  margin:0 auto;
 }

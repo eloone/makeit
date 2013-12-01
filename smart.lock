@@ -1,0 +1,15 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "account-custom": {
+        "path": "packages/account-custom"
+      }
+    },
+    "packages": {
+      "account-custom": {
+        "path": "packages/account-custom"
+      }
+    }
+  }
+}

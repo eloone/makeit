@@ -1,8 +1,14 @@
 router = new (Backbone.Router.extend({
 
   routes: {
-    ''        : 'all',
-    'tag/:tag': 'tag'
+    ''        : 'index',
+    '/'       : 'index',
+    'tag/:tag': 'tag',
+    '*notFound': 'notFound'
+  },
+
+  index: function(){
+
   },
 
   all: function () {
@@ -11,5 +17,10 @@ router = new (Backbone.Router.extend({
 
   tag: function (tag) {
     Session.set('tag', tag === 'all' ? null : tag);
+  },
+
+  notFound : function(){
+    Session.set('page404', true);
   }
+
 }))();

@@ -1,0 +1,7 @@
+{
+  "packages": {
+    "account-custom": {
+      "path": "packages/account-custom"
+    }
+  }
+}

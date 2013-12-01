@@ -8,7 +8,10 @@ insecure
 preserve-inputs
 less
 jquery
-accounts-facebook
 bootstrap
 underscore
 backbone
+standard-app-packages
+accounts-google
+accounts-password
+account-custom

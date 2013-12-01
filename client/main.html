@@ -5,24 +5,32 @@
 </head>
 
 <body>
-  {{#if currentUser}}
-  <div class="container">
-    {{> navbar}}
-    <div class="row-fluid">
-      <div class="span3">
-        {{> tag-list}}
-      </div>
-      <div class="span9">
-        <div class="task-creator">
-          {{> new-task}}
+    {{> main}}
+</body>
+
+<template name="main">
+  {{#if page404}}
+  404
+  {{else}}
+    {{#if currentUser}}
+    <div class="container">
+      {{> navbar}}
+      <div class="row-fluid">
+        <div class="span3">
+          {{> tag-list}}
         </div>
-        <div class="tasks-lister">
-          {{> task-list}}
+        <div class="span9">
+          <div class="task-creator">
+            {{> new-task}}
+          </div>
+          <div class="tasks-lister">
+            {{> task-list}}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  {{else}}
-    {{> login}}
+    {{else}}
+      {{> login}}
+    {{/if}}
   {{/if}}
-</body>
+</template>

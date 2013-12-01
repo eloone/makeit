@@ -1,5 +1,5 @@
 Template.navbar.avatar = function () {
-  getFacebookPicture();
+  //getFacebookPicture();
   return Session.get('avatar');
 };
 

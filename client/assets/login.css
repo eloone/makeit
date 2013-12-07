@@ -3,8 +3,7 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  /*background: #000 url('/images/bg.jpg');*/
-  background:#FAF4C9;
+  background:url(/images/line.svg) repeat-y #FAF4C9;
   background-position: center;
 }
 
@@ -14,7 +13,7 @@
   background:white;
   border-radius:10px;
   padding:15px;
-  color:#225DC5;
+  color:#08B8CF;
 }
 
 .login-box .logo {
@@ -47,7 +46,7 @@
 
 #login-buttons-google{
   margin:5px;
-  border:1px solid #3D7EF1;
+  border:1px solid #08B8CF;
   padding:5px;
   border-radius:5px;
   overflow:hidden;
@@ -55,7 +54,7 @@
 }
 
 .login-button:hover{
-  color:#6498F3;
+  color:#09D0EB;
 }
 
 #login-buttons-image-google{
@@ -84,7 +83,7 @@
 }
 
 .login-button{
-   border:1px solid #3D7EF1;
+   border:1px solid #08B8CF;
    border-radius:5px;
    padding:5px;
    cursor:pointer;
@@ -99,13 +98,32 @@
 
 .additional-link{
   margin:0 15px 0 15px;
+  color:#39B5DB;
 }
 
 .additional-link:hover{
-  color:#6498F3;
+  color:#09D0EB;
 }
 
 #back-to-login-link{
   width:110px;
   margin:0 auto;
+}
+
+.login-box-and-logo{
+  width:500px;
+  margin:0 auto;
+  background:rgba(255, 255, 255, 0.4);
+  padding: 20px 50px 50px 50px;
+  margin-top:20px;
+  border-radius:10px;
+}
+
+.login-box-and-logo h1{
+  text-indent:-99999px;
+  width:340px;
+  height:140px;
+  margin:0 auto;
+  background:url(/images/new_logo.png) no-repeat;
+  background-size:contain;
 }

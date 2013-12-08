@@ -1,6 +1,12 @@
 .navbar {
-  margin-top: 10px;
-  margin-bottom: 40px;
+  margin-bottom: 0;
+  color:#411202;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+}
+
+.navbar a{
+  color:#411202;
 }
 
 .navbar-inner {
@@ -8,7 +14,7 @@
   border-radius: 0;
   background: none;
   box-shadow: none;
-  padding-bottom: 10px;
+  padding-bottom: 7px;
   border-bottom: 1px solid #e6f1f7;
 }
 
@@ -18,9 +24,8 @@
 
 .navbar .infos {
   float: right;
-  font-size: 12px;
   line-height: 14px;
-  margin: 5px;
+  margin-top: 5px;
 }
 
 .navbar .user {
@@ -29,7 +34,6 @@
 
 .navbar .user img {
   width: 32px;
-  float: left;
   margin: 5px;
 }
 
@@ -37,10 +41,6 @@
     overflow: hidden;
     margin-bottom: 20px;
     padding:10px;
-}
-
-.logout{
-    float: left;
 }
 
 .tracker{
@@ -81,3 +81,61 @@ text-align: center;
 .tracker .points:hover .caption{
   display:inline-block;
 }
+
+.inline-menu{
+  border-left:1px solid #411202;
+  padding:0 10px 0 10px;
+}
+
+.inline-menu:first-child{
+  border:0;
+}
+
+.user-greeting{
+  background:rgb(153, 243, 255);
+  padding:3px;
+  margin-right:5px;
+  position:relative;
+  margin-bottom:0;
+}
+
+.user-profile{
+  margin-right: 5px;
+}
+
+.user-profile-text{
+  line-height:48px;
+}
+
+.with-score .user-name{
+  margin-top:5px;
+  display:inline-block;
+  vertical-align:top;
+}
+
+.with-score .score{
+  display:block;
+  margin-top: 5px;
+}
+
+.logout{
+  line-height:48px;
+  border-left:1px solid #ccc;
+  padding-left:10px;
+  margin-left:10px;
+}
+
+.user-greeting:hover .logout-link{
+  display:block;
+}
+
+.logout-link{
+  float:right;
+  margin-right:5px;
+  display:none;
+}
+
+.logo{
+  margin:20px 10px 10px 10px;
+}
+

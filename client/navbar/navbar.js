@@ -1,10 +1,11 @@
 Template.navbar.avatar = function () {
-  //getFacebookPicture();
+  getGooglePicture();
   return Session.get('avatar');
 };
 
 Template.navbar.tag = function(){
   return Session.get('tag') || 'All';
+
 };
 
 Template.navbar.count_done = function(){
@@ -26,7 +27,7 @@ Template.navbar.points = function(){
 };
 
 Template.navbar.events({
-  'click .logout': function (event) {
+  'click .logout-link': function (event) {
     event.preventDefault();
     Meteor.logout();
   }

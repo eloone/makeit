@@ -1,0 +1,11 @@
+body{
+	 background:url(/images/line.svg) repeat-y #FAF4C9;
+}
+
+a{
+	 color:#08B8CF;
+}
+
+ul li{
+	list-style-type:none;
+}

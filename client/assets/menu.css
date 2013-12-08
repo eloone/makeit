@@ -1,0 +1,54 @@
+.menu{
+	overflow:hidden;
+	padding:0 10px;
+	padding-left:0;
+	margin:0;
+	background:rgba(255, 255, 255, 0.5);
+}
+
+.menu li{
+	float:left;
+	background:rgba(255, 255, 255, 0.5);
+	border-right:1px solid #e6f1f7;
+
+}
+
+.menu a{
+	display: block;
+	padding: 10px 30px 10px 30px;
+}
+
+.menu .dashboard:hover,
+.menu .dashboard.current{
+	background:#E2FF47;
+}
+
+.menu .dashboard.current:hover{
+	background:#D8F541;
+}
+
+.menu a:hover{
+	text-decoration: none;
+	color:#08B8CF;
+}
+
+.menu .all:hover,
+.menu .all.current{
+	background: rgb(153, 243, 255);
+	color:#08B8CF;
+}
+
+.menu .all.current:hover{
+	background: rgb(125, 228, 241);
+}
+
+.menu .new:hover,
+.menu .new.current{
+	background:#FF3878;
+	color: #D0FA90;
+}
+
+.menu .new.current:hover{
+	background: #E9316C;
+	color: #D0FA90;
+}

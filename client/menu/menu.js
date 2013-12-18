@@ -7,7 +7,7 @@ Template.menu.new = function () {
 };
 
 Template.menu.all = function () {
-  return Session.get('all');
+  return Session.get('tag') == 'all';
 };
 
 Template.menu.events({

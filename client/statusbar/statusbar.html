@@ -1,0 +1,15 @@
+<template name="statusbar">
+<div class="statusbar">
+	{{#if home}}
+	<p class="title">Your projects dashboard : admire your progress</p>
+	{{else}}
+		{{#each tag}}
+		<div class="category-status">
+			<span class="category">{{text}}</span>
+			<span style="width:{{progress}}%;" class="progress-tracker"></span>
+			{{> tag-data}}
+		</div>
+		{{/each}}
+	{{/if}}
+</div>
+</template>

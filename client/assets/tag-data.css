@@ -1,0 +1,48 @@
+
+.tag-all-data{
+    position: absolute;
+    right: 0;
+    top:5px;
+}
+
+.tag-data{
+  background: white;
+  color: #411202;
+  padding: 0 5px;
+  float:left;
+  text-align:center;
+  margin-right:2px;
+  border: 1px solid #e6f1f7;
+  height: 50px;
+  font-size:12px;
+}
+
+.tag-data .data-title{
+  font-size:12px;
+  text-transform: none;
+}
+
+.tag-data .data-value{
+  text-align:center;
+  border-radius:20px;
+  padding: 2px 4px;
+  margin:0;
+}
+
+.tag-data.done .data-value{
+  background: #E2FF47;
+}
+
+.tag-data.to-do .data-value{
+  background: #F78753;
+}
+
+.tag-data.count .data-value{
+  background: #FD5050;
+}
+
+.tag-data .tag-label{
+  padding:5px;
+  background:white;
+  color:#411202;
+}

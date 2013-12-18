@@ -2,10 +2,11 @@
   margin-bottom: 0;
   color:#411202;
   background: rgba(255, 255, 255, 0.5);
-  font-size: 13px;
+  font-size: 14px;
+  position: relative;
 }
 
-.navbar a{
+.navbar .user a{
   color:#411202;
 }
 
@@ -125,6 +126,10 @@ text-align: center;
   margin-left:10px;
 }
 
+.user-greeting:hover{
+  margin-bottom: 5px;
+}
+
 .user-greeting:hover .logout-link{
   display:block;
 }
@@ -136,6 +141,22 @@ text-align: center;
 }
 
 .logo{
-  margin:20px 10px 10px 10px;
+  /*margin:20px 10px 10px 10px;*/
+  margin:5px;
+}
+
+.navbar-inner{
+  padding-bottom: 0;
+}
+
+.search-form{
+  margin-top: 5px;
+  margin-right: 36px;
+  width: 400px;
+  border: 1px solid #e6f1f7 !important;
+  border-radius: 0 !important;
+  margin-bottom:0 !important;
+  height: 40px !important;
+  color:#411202 !important;
 }
 

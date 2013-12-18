@@ -1,7 +1,12 @@
 <template name="menu">
-  <ul class="menu">
-    <li><a class=" {{#if home}}current{{/if}} dashboard" href="/">Dashboard</a></li>
-    <li><a class="{{#if all}}current{{/if}} all" href="/all">All</a></li>
-    <li><a class="new {{#if new}}current{{/if}} " href="/new">New</a></li>
-  </ul>
+    <ul class="pull-left menu">
+      <!--li><a class=" {{#if home}}current{{/if}} dashboard" href="/">Dashboard</a></li-->
+      <li>
+        <a class="{{#if home}}current{{/if}} dashboard" href="/"> 
+          <img class="logo" src="/images/logo_trim.png" width="150"/>
+        </a>
+      </li>
+      <li><a class="{{#if all}}current{{/if}} all" href="/tag/all">All</a></li>
+      <li><a class="new {{#if new}}current{{/if}} " href="/new">New</a></li>
+    </ul>
 </template>

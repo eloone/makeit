@@ -17,6 +17,8 @@ checkReward = function (tags) {
         return Template['reward-roma']();
       case 'family':
         return Template['reward-family']();
+      default:
+        return Template['reward-default']();
     }
   });
 

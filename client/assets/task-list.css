@@ -1,25 +1,34 @@
 .task-list {
-  margin: 10px 0;
+  margin: 20px 0;
   padding: 0;
-  font-size: 18px;
+  font-size: 30px;
 }
 
 .task-list li {
   margin: 2px 0;
   padding: 0 5px;
   list-style-type: none;
-  background: #3a87ad;
   line-height: 30px;
   cursor: pointer;
-  color: #fff;
+  font-family: 'Handlee', cursive;
+  position:relative;
+}
+
+.task-list li:before{
+  content:"-"; 
+  position:relative; 
 }
 
 .task-list li a {
   color: #fff;
 }
 
+.tasks-lister{
+  padding:0 100px;
+}
+
 .task-list li:hover, .task-list .done {
-  background: #206587;
+
 }
 
 .task-list li .infos {
@@ -33,8 +42,29 @@
 }
 
 .task-list .done {
-  color: #ccc;
-  text-decoration: line-through;
+  /*text-decoration: line-through;*/
+}
+
+.task-list .strike{
+  height:15px;
+  display:block;
+  position:absolute;
+  top:5px;
+  width:0;
+  /*background:rgba(255, 100, 100, 0.3);*/
+  background:rgba(125, 228, 241, 0.36);
+  transition-property:width;
+transition-duration:400ms;
+/* Safari */
+-webkit-transition-property:width;
+-webkit-transition-duration:400ms;
+
+}
+
+.task-list .strike.on{
+  width:100%;
+    /*transition: width 400ms, height 400ms, transform 400ms;
+ -webkit-transition: width 400ms, height 400ms, -webkit-transform 400ms;*/
 }
 
 .suggestion{

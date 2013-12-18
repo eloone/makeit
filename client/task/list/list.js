@@ -11,9 +11,51 @@ getTasks = function (done) {
   if (Session.get('tag'))
     query.tags = Session.get('tag');
 
+  if(Session.get('tag') == 'all')
+    delete query.tags;
+
   // Sort first by decreasing satisfaction then increasing difficulty
   // Easy and short first
   return Tasks.find(query, {sort: {date: -1}});
+};
+
+countTasks = function(done){
+  if (! Meteor.user())
+    return ;
+
+  var query = {
+    user: Meteor.user()._id,
+    done: done
+  };
+
+  if (Session.get('tag'))
+    query.tags = Session.get('tag');
+
+  if(Session.get('tag') == 'all')
+    delete query.tags;
+
+  // Sort first by decreasing satisfaction then increasing difficulty
+  // Easy and short first
+  return Tasks.find(query, {sort: {date: -1}}).count();
+};
+
+getTotalTasks = function(){
+  if (! Meteor.user())
+    return ;
+
+  var query = {
+    user: Meteor.user()._id
+  };
+
+  return Tasks.find(query, {sort: {date: -1}}).count();
+
+};
+
+getProgress = function(){
+  var count = countTasks(true);
+  var total = getTotalTasks();
+
+  return (count*100)/total;
 };
 
 //Returns suggested tasks
@@ -78,7 +120,8 @@ Template['task-list'].doneTasks = function () {
 Template['task-list'].events({
   'click li': function (event) {
     var $target = $(event.target),
-        $currentTarget = $(event.currentTarget);
+        $currentTarget = $(event.currentTarget),
+        $strike = $(event.target).find('.strike');
 
     if ($target.is('a')) {
       event.preventDefault();
@@ -89,8 +132,12 @@ Template['task-list'].events({
     var task = Tasks.findOne({_id: $currentTarget.data('id')});
 
     // Update task (done/undone)
-    Tasks.update({_id: $currentTarget.data('id')}, {$set: {done: ! $currentTarget.hasClass('done')}});
+    Tasks.update({_id: $currentTarget.data('id')}, {$set: {done: ! $currentTarget.hasClass('done')}}, function(){
+     
+        $('#_'+$currentTarget.data('id')+'.done .strike').css({width : '100%'});
 
-    checkReward(task.tags);
+    });
+
+    //checkReward(task.tags);
   }
 });

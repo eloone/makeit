@@ -1,5 +1,7 @@
 .tag-list {
   margin-bottom: 20px;
+  font-size:18px;
+  color:#411202;
 }
 
 .tag-list ul{
@@ -7,12 +9,14 @@
   padding: 0;
 }
 
-.tag-list li{
+.tag-list .tag-item{
   list-style-type: none;
   background: white;
   margin-bottom: 2px;
   position: relative;
   border: 1px solid #eee;
+  padding:0 25px;
+  height:62px;
 }
 
 .tag-list .tag{
@@ -21,7 +25,12 @@
   padding: 10px;
   text-decoration: none;
   display: block;
+  height:100%;
+  line-height: 40px;
+}
 
+.tag-list  li:hover .progress{
+  background: rgb(125, 228, 241);
 }
 
 .tag-list .progress{
@@ -33,17 +42,12 @@
   text-align: right;
   height:100%;
   border-radius: 0;
-  background: #DCEDF2;
-}
-
-.tag-list .count{
-  border-radius:50px;
-  background: #43ACCC;
-  color: white;
-  font-weight:bold;
-  padding: 5px;
+  background: rgb(153, 243, 255);
+  box-shadow:none !important;
 }
 
 .tag-list li.current .progress{
   background:#DBF7C1;
 }
+
+

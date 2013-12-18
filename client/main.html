@@ -2,6 +2,7 @@
   <title>Make it</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,700,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
 </head>
 
 <body>
@@ -14,19 +15,24 @@
   {{else}}
     {{#if currentUser}}
      {{> navbar}}
-    <div class="container">
-      {{> menu}}    
+    <div class="container">  
       <div class="row-fluid">
+        {{> statusbar}}
+        {{#if tag}}
+            <div class="tasks-lister">
+              {{> task-list}}
+            </div>
+          {{else}}
+            {{> tag-list}}
+        {{/if}}
         <div class="span3">
-          {{> tag-list}}
+          {{!> tag-list}}
         </div>
         <div class="span9">
           <div class="task-creator">
-            {{> new-task}}
+            {{!> new-task}}
           </div>
-          <div class="tasks-lister">
-            {{> task-list}}
-          </div>
+        
         </div>
       </div>
     </div>

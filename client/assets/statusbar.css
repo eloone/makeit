@@ -1,0 +1,44 @@
+.statusbar{
+	background:rgba(255, 255, 255, 0.5);
+	padding:10px;
+	overflow:hidden;
+	padding-left:25px;
+	position:relative;
+}
+
+.statusbar .title{
+	background: white;
+	padding:5px;
+	font-size:18px;
+	float: left;
+	color:#411202;
+	font-weight:normal; 
+}
+
+.statusbar .category-status{
+	float:left;
+	padding:5px;	
+	text-transform: uppercase;
+	color: #08B8CF;
+	font-size: 21px;
+	margin-bottom:2px;
+	height:30px;
+}
+
+.statusbar .progress-tracker{
+	position:absolute;
+	left: 0;
+	display:block;
+	height: 100%;
+	top:0;
+	bottom: 0;
+	background:rgb(153, 243, 255);
+}
+
+.statusbar .category{
+	position:relative;
+	z-index:1;
+	background:white;
+	padding:5px;
+	float:left;
+}

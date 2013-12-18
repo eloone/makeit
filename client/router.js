@@ -3,7 +3,6 @@ router = new (Backbone.Router.extend({
   routes: {
     ''        : 'index',
     '/'       : 'index',
-    'all'     : 'all',
     'new'     : 'new',
     'tag/:tag': 'tag',
     '*notFound': 'notFound'
@@ -13,17 +12,12 @@ router = new (Backbone.Router.extend({
     Session.set('home', true);
   },
 
-  all: function () {
-    //this.navigate('tag/all', {trigger: true});
-    Session.set('all', true);
-  },
-
   new: function(){
     Session.set('new', true);
   },
 
   tag: function (tag) {
-    Session.set('tag', tag === 'all' ? null : tag);
+    Session.set('tag', tag);
   },
 
   notFound : function(){

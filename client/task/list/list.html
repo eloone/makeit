@@ -1,24 +1,25 @@
 <template name="task-list">
-  <ul class="task-list">
+  <ul class="task-list undone-list">
   {{#each tasks}}
-    <li data-id='{{_id}}'>
+    <li id="_{{_id}}" data-id='{{_id}}'>
       <span class="title">
-        <i class="icon-check-empty"></i>
+        <!--i class="icon-check-empty"></i>
         <i class="icon-heart level-{{difficulty}}"></i>
-        <i class="icon-bolt level-{{difficulty}}"></i>
-        {{text}}
+        <i class="icon-bolt level-{{difficulty}}"></i-->
+        {{text}}      
       </span>
       <div class="infos">{{{info}}}</div>
     </li>
   {{/each}}
   </ul>
-  <ul class="task-list">
+  <ul class="task-list done-list">
   {{#each doneTasks}}
-    <li class="done" data-id='{{_id}}'>
-      <i class="icon-check"></i>
+    <li id="_{{_id}}" class="done" data-id='{{_id}}'>
+      <!--i class="icon-check"></i>
       <i class="icon-heart level-{{difficulty}}"></i>
-      <i class="icon-bolt level-{{difficulty}}"></i>
+      <i class="icon-bolt level-{{difficulty}}"></i-->
       {{text}}
+      <span style="width:100%;" class="strike"></span>
     </li>
   {{/each}}
   </ul>

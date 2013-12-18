@@ -2,20 +2,25 @@
 	overflow:hidden;
 	padding:0 10px;
 	padding-left:0;
-	margin:0;
-	background:rgba(255, 255, 255, 0.5);
+	margin:5px;
+	margin-right: 0;
+	padding-right: 0;
 }
 
 .menu li{
 	float:left;
 	background:rgba(255, 255, 255, 0.5);
-	border-right:1px solid #e6f1f7;
-
+	/*border-right:1px solid #e6f1f7;*/
+	height:51px;
+	margin-right:5px;
+	text-transform: uppercase;
 }
 
 .menu a{
 	display: block;
 	padding: 10px 30px 10px 30px;
+	height:100%;
+	line-height: 30px;
 }
 
 .menu .dashboard:hover,
@@ -49,6 +54,12 @@
 }
 
 .menu .new.current:hover{
-	background: #E9316C;
+	background: #EE336F;
 	color: #D0FA90;
 }
+
+.subnavbar{
+	overflow:hidden;
+	/*background:rgba(255, 255, 255, 0.5);*/
+}
+

@@ -19,22 +19,26 @@ getTags = function (filter) {
           text: text,
           count: 1,
           done: task.done ? 1 : 0,
+          left: task.done ? 0 : 1,//added by elodie
           difficulty: task.difficulty
         });
       else {
         tag.count++;
         tag.done = task.done ? tag.done + 1 : tag.done;
         tag.difficulty += task.difficulty;
+        tag.left = tag.count - tag.done;
       }
     });
 
     taskCount++;
     doneCount = task.done ? doneCount + 1 : doneCount;
     difficultyCount += task.difficulty;
+    leftCount = taskCount - doneCount;
   });
 
   if (_.isArray(filter))
     tags = _.filter(tags, function (tag) {
+     // console.log(tag.text);
       return filter.indexOf(tag.text) >= 0;
     });
 
@@ -42,6 +46,7 @@ getTags = function (filter) {
     text: 'all',
     count: taskCount,
     done: doneCount,
+    left : leftCount,
     difficulty: difficultyCount
   });
 
@@ -50,8 +55,8 @@ getTags = function (filter) {
     return _.extend(tag, {
       progress: Math.round(tag.done / tag.count * 100),
       complete: tag.done === tag.count,
-      difficultyAverage: Math.round(tag.difficulty / tag.count / 3 * 100) / 100,
-      current: tag.text == 'all' ? 'current' : ''
+      difficultyAverage: Math.round(tag.difficulty / tag.count / 3 * 100) / 100
+      //current: tag.text == 'all' ? 'current' : ''
     });
   });
 

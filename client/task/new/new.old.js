@@ -1,6 +1,5 @@
 tagRegexp = /#([^\s]*)/g;
-var starCount = 0;
-var plusCount = 0;
+
 // Extract hash tags from a text
 extractHashTags = function (text) {
   return _.map(text.match(tagRegexp), function (text) {
@@ -81,6 +80,13 @@ addTask = function (options) {
   }));
 };
 
+// Reset the cursors
+resetCursors = function () {
+  $('.cursor')
+      .removeClass('checked')
+      .filter(':first-child').addClass('checked');
+};
+
 // Add a smart task
 detectSmartTask = function (task) {
   if (task.text.match(/call.*06/i)) {
@@ -96,30 +102,10 @@ Template['new-task'].suggestions = function () {
 };
 
 Template['new-task'].events({
-  //new version added
-  'focus .input' : function(event){
-    var $target = $(event.target);
-
-    if($target.text().trim() == $('.placeholder').text().trim()){
-       $target.text('');
-    }
-   
-  },
-  'blur .input' : function(event){
-    var $target = $(event.target);
-
-    if($target.text() == ''){
-      $target.removeClass('typing');
-      $target.text($('.placeholder').text());
-    }
-
-  },
-  'keyup .input': function (event) {
+  'keyup [name=task]': function (event) {
     var $target = $(event.target),
-        text = $target.html(),
+        text = $target.val(),
         tags = extractHashTags(text);
-
-    $target.addClass('typing');
 
     //Set suggestions
     Session.set('suggestions', getSuggestions(tags));
@@ -127,79 +113,34 @@ Template['new-task'].events({
     // Active task-creator
     $('.task-creator').toggleClass('active', !! text);
 
-    starCount = $target.find('.fa-bolt').length;
-
-    plusCount = $target.find('.fa-heart').length;
-
-    //replaces * by bolts
-    if (event.keyCode == 56 || event.keyCode == 106){// * sign
-      if(starCount < 3){
-        if(/\*$/.test(text)){
-            starCount++;
-            var html = $target.html();
-            html = html.replace(/\*$/, '');
-            $target.html(html+'<i class="fa fa-bolt"></i>&nbsp');      
-            setEndOfContenteditable($target.get(0));
-            $target.focus();
-        }
-      }
+    // Active tooltip
+    if (!! text)
+      $('i').tooltip();
+    else {
+      $('i').tooltip('destroy');
+      resetCursors();
     }
 
-    //replaces + by hearts
-    if (event.keyCode == 107 || event.keyCode == 187){// + sign
-      if(plusCount < 3){
-        if(/\+$/.test(text)){
-            plusCount++;
-            var html = $target.html();
-            html = html.replace(/\+$/, '');
-            $target.html(html+'<i class="fa fa-heart"></i>&nbsp');      
-            setEndOfContenteditable($target.get(0));
-            $target.focus();
-        }
-      }
-    }
-
-    switch(starCount){
-      case 1:
-        $target.find('.fa-bolt').attr('title', 'easy');
-        break;
-      case 2:
-        $target.find('.fa-bolt').attr('title', 'feasible');
-        break;
-      case 3:
-        $target.find('.fa-bolt').attr('title', 'a real challenge!');
-        break;
-    }
-
-    switch(plusCount){
-      case 1:
-        $target.find('.fa-heart').attr('title', 'nice');
-        break;
-      case 2:
-        $target.find('.fa-heart').attr('title', 'great');
-        break;
-      case 3:
-        $target.find('.fa-heart').attr('title', 'i love it!');
-        break;
-    }
-
-    // After we type enter
+    // After we click on enter
     if (event.keyCode !== 13) // 13 = enter
       return true;
 
     // Detect smart-task
     task = detectSmartTask({
-      text: $target.text(),
-      satisfaction: plusCount,
-      difficulty: starCount
+      text: text,
+      satisfaction: getCursorScore('satisfaction'),
+      difficulty: getCursorScore('difficulty')
     });
 
     // Insert task
     addTask(task);
 
     // Clear input
-    $target.html('');
+    $target.val('');
+    resetCursors();
 
+    // Active task-creator
+    $('.task-creator').removeClass('active');
   },
 
   'click .cursor': function (event) {
@@ -224,24 +165,3 @@ Template['new-task'].events({
   }
 
 });
-
-function setEndOfContenteditable(contentEditableElement)
-{
-    var range,selection;
-    if(document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
-    {
-        range = document.createRange();//Create a range (a range is a like the selection but invisible)
-        range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
-        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-        selection = window.getSelection();//get the selection object (allows you to change selection)
-        selection.removeAllRanges();//remove any selections already made
-        selection.addRange(range);//make the range you have just created the visible selection
-    }
-    else if(document.selection)//IE 8 and lower
-    { 
-        range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
-        range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
-        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
-        range.select();//Select the range (make it the visible selection
-    }
-}

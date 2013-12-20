@@ -52,3 +52,22 @@
 .task-creator.active .task-extra .cursor.checked, .task-creator.active .task-extra .cursor:hover{
   color: #206587;
 }
+
+.task-creator .input{
+  height: 40px;
+  margin: 30px 0;
+  outline: none;
+  font-family: 'Handlee', cursive;
+  font-size: 30px;
+  line-height: 45px;
+  font-size: 24px;
+}
+
+.task-creator .input.typing{
+  font-size: 30px
+}
+
+/*jaune rgb(238, 203, 20)*/
+.task-creator .fa{
+  font-size:18px;
+}

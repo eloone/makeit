@@ -1,9 +1,11 @@
 <template name="tag-list">
   <div class="tag-list">
+    <div contenditable="true" class="input">
+    </div>
     <ul>
       {{#each tags}}
         <li class="tag-item {{current}}">
-          <a title="you're at {{progress}}%" class="tag" href="#/tag/{{text}}">
+          <a title="you're at {{progress}}%" class="tag" href="/tag/{{text}}">
             <span class="tag-label">{{label}}</span></a>
           <span title="you're at {{progress}}%" style="width:{{progress}}%;" class="progress"></span>
          {{> tag-data}}

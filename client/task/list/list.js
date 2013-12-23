@@ -228,16 +228,9 @@ Template['task-list'].events({
 
         //saves task by typing Enter
         if(event.keyCode == 13){
-          //fasten your seatbelts some coconut stuff going on here
+          
           var task = Tasks.findOne({_id: $line.data('id')}),
-              //removes bolts from edited text
-              rawEncodedHtml = encodedTxt.replace(/(%EF%83%A7)+/g, ''),
-              //removes hearts from edited text
-              rawEncodedHtml = rawEncodedHtml.replace(/(%EF%80%84)+/g, ''),
-              //gets the resulting html
-              rawHtml = decodeURIComponent(rawEncodedHtml),
-              //gets the text in the html
-              rawTxt = $($.parseHTML(rawHtml)).text().trim(),
+              rawTxt = getRawText(encodedTxt),
               //we don't save symbols in DB just text
               toSave = {
                 done : $line.hasClass('done'),

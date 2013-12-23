@@ -4,7 +4,8 @@ editTask = function editTask(plusCount, starCount, event){
 		text;
 
     $target.find('br').remove(); 
-    text = $target.html();
+    $target.find('div').remove(); 
+    text = $target.html().trim();
 
 	//replaces * by bolts
     if (event.keyCode == 56 || event.keyCode == 106){// * sign
@@ -63,3 +64,19 @@ setEndOfContenteditable = function setEndOfContenteditable(contentEditableElemen
 getCountChar = function getCountChar(char, inStr){
   return (inStr.split(char).length - 1);
 }
+
+getRawText = function getRawText(encodedTxt){
+	var $currentTarget = $(event.currentTarget),
+		rawEncodedHtml;
+ 	  //fasten your seatbelts some coconut stuff going on here
+      //removes bolts from edited text
+      rawEncodedHtml = encodedTxt.replace(/(%EF%83%A7)+/g, ''),
+      //removes hearts from edited text
+      rawEncodedHtml = rawEncodedHtml.replace(/(%EF%80%84)+/g, ''),
+      //gets the resulting html
+      rawHtml = decodeURIComponent(rawEncodedHtml),
+      //gets the text in the html
+      rawTxt = $($.parseHTML(rawHtml)).text().trim();
+
+      return rawTxt;
+};

@@ -136,20 +136,21 @@ Template['new-task'].events({
     //adds hearts and bolts while editing
     cursors = editTask(plusCount, starCount, event);
 
-    // After we type enter
-    if (event.keyCode !== 13) // 13 = enter
+    var rawTxt = getRawText(encodedTxt);
+    // After we type enter || no text to save
+    if (event.keyCode !== 13 || rawTxt == '') // 13 = enter
       return true;
 
     // Detect smart-task
     task = detectSmartTask({
-      text: $target.text(),
+      text: rawTxt,
       satisfaction: plusCount,
       difficulty: starCount
     });
 
     // Insert task
     addTask(task);
-
+    
     // Clear input
     $target.html('');
 

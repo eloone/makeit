@@ -113,6 +113,7 @@ transition-duration:400ms;
   outline:none;
   display:inline-block;
   width:90%;
+  line-height: 40px;
 }
 
 .task-list .editable[contenteditable=true]{

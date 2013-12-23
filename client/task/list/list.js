@@ -164,7 +164,7 @@ Template['task-list'].events({
         if(original.trim() == ''){
             $currentTarget.siblings('.original').html(originalCnt);
         }
-console.log(Session.get('display_indications'));
+
         if(Session.get('display_indications') !== false){
           $('.indications').css('visibility', 'visible');
         }else{
@@ -198,11 +198,62 @@ console.log(Session.get('display_indications'));
       }
 
   },
-  'keyup .task' : function(event){
-    var $target = $(event.target),//li
-        $currentTarget = $(event.currentTarget);
-
+  'keyup .editable' : function(event){
+    var $target = $(event.target),
+        $currentTarget = $(event.currentTarget),
+        $original = $currentTarget.siblings('.original'),
+        $tmp = $currentTarget.siblings('.tmp'),
+        original = $original.html(),
+        tmp = $tmp.html(),
+        $line = $currentTarget.parent('.task'),
+        encodedTxt = encodeURIComponent($currentTarget.html()),     
+        cursors = {};
+        
+        difficulty = getCountChar('%EF%83%A7', encodedTxt);
+        satisfaction = getCountChar('%EF%80%84', encodedTxt);
+        
         $currentTarget.addClass('typing');
+
+        //adds hearts and bolts while editing
+        cursors = editTask(satisfaction, difficulty, event);
+
+        //cancels edits by typing Esc
+        if(event.keyCode == 27){
+          $currentTarget.html(original)
+                        .blur();
+          $tmp.html('');
+        }
+
+        encodedTxt = encodeURIComponent($currentTarget.html());
+
+        //saves task by typing Enter
+        if(event.keyCode == 13){
+          //fasten your seatbelts some coconut stuff going on here
+          var task = Tasks.findOne({_id: $line.data('id')}),
+              //removes bolts from edited text
+              rawEncodedHtml = encodedTxt.replace(/(%EF%83%A7)+/g, ''),
+              //removes hearts from edited text
+              rawEncodedHtml = rawEncodedHtml.replace(/(%EF%80%84)+/g, ''),
+              //gets the resulting html
+              rawHtml = decodeURIComponent(rawEncodedHtml),
+              //gets the text in the html
+              rawTxt = $($.parseHTML(rawHtml)).text().trim(),
+              //we don't save symbols in DB just text
+              toSave = {
+                done : $line.hasClass('done'),
+                text : rawTxt,
+                satisfaction : satisfaction,
+                difficulty : difficulty
+              };
+
+          if(rawTxt == ''){
+            //if no text + save = we delete the task
+            Tasks.remove({_id: $line.data('id')});
+          }else{
+            // Save task 
+            Tasks.update({_id: $line.data('id')}, {$set: toSave});
+          }
+        }
   }
 });
 

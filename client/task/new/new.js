@@ -117,7 +117,8 @@ Template['new-task'].events({
   'keyup .input': function (event) {
     var $target = $(event.target),
         text = $target.html(),
-        tags = extractHashTags(text);
+        tags = extractHashTags(text),
+        encodedTxt = encodeURIComponent(text);
 
     $target.addClass('typing');
 
@@ -127,9 +128,9 @@ Template['new-task'].events({
     // Active task-creator
     $('.task-creator').toggleClass('active', !! text);
 
-    starCount = $target.find('.fa-bolt').length;
+    starCount = getCountChar('%EF%83%A7', encodedTxt);
 
-    plusCount = $target.find('.fa-heart').length;
+    plusCount = getCountChar('%EF%80%84', encodedTxt);
 
     //replaces * by bolts
     if (event.keyCode == 56 || event.keyCode == 106){// * sign
@@ -138,7 +139,7 @@ Template['new-task'].events({
             starCount++;
             var html = $target.html();
             html = html.replace(/\*$/, '');
-            $target.html(html+'<i class="fa fa-bolt"></i>&nbsp');      
+            $target.html(html+'&#xf0e7;&nbsp;');      
             setEndOfContenteditable($target.get(0));
             $target.focus();
         }
@@ -152,7 +153,7 @@ Template['new-task'].events({
             plusCount++;
             var html = $target.html();
             html = html.replace(/\+$/, '');
-            $target.html(html+'<i class="fa fa-heart"></i>&nbsp');      
+            $target.html(html+'&#xf004;&nbsp;');      
             setEndOfContenteditable($target.get(0));
             $target.focus();
         }
@@ -168,18 +169,6 @@ Template['new-task'].events({
         break;
       case 3:
         $target.find('.fa-bolt').attr('title', 'a real challenge!');
-        break;
-    }
-
-    switch(plusCount){
-      case 1:
-        $target.find('.fa-heart').attr('title', 'nice');
-        break;
-      case 2:
-        $target.find('.fa-heart').attr('title', 'great');
-        break;
-      case 3:
-        $target.find('.fa-heart').attr('title', 'i love it!');
         break;
     }
 
@@ -244,4 +233,8 @@ function setEndOfContenteditable(contentEditableElement)
         range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
         range.select();//Select the range (make it the visible selection
     }
+}
+
+function getCountChar(char, inStr){
+  return (inStr.split(char).length - 1);
 }

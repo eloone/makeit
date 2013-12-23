@@ -118,10 +118,11 @@ Template['task-list'].doneTasks = function () {
 };
 
 Template['task-list'].events({
-  'click li': function (event) {
-    var $target = $(event.target),
-        $currentTarget = $(event.currentTarget),
-        $strike = $(event.target).find('.strike');
+  'click .togglecheck': function (event) {
+    var $target = $(event.target),//img
+        $currentTarget = $(event.currentTarget),//.check/.uncheck
+        $strike = $(event.target).siblings('.strike'),
+        $line = $currentTarget.parents('.task');
 
     if ($target.is('a')) {
       event.preventDefault();
@@ -129,15 +130,114 @@ Template['task-list'].events({
       return false;
     }
 
-    var task = Tasks.findOne({_id: $currentTarget.data('id')});
+    var task = Tasks.findOne({_id: $line.data('id')});
 
     // Update task (done/undone)
-    Tasks.update({_id: $currentTarget.data('id')}, {$set: {done: ! $currentTarget.hasClass('done')}}, function(){
+    Tasks.update({_id: $line.data('id')}, {$set: {done: ! $line.hasClass('done')}}, function(){
      
-        $('#_'+$currentTarget.data('id')+'.done .strike').css({width : '100%'});
+        $('#_'+$line.data('id')+'.done .strike').css({width : '100%'});
 
     });
 
     //checkReward(task.tags);
+  },
+  'click .editable, .editable .cursor' : function(event){
+     var $target = $(event.target),
+        $currentTarget = $(event.currentTarget),
+        originalCnt = $currentTarget.html(),
+        original = $currentTarget.siblings('.original').html(),
+        tmp = $currentTarget.siblings('.tmp').html();
+
+        $currentTarget.attr('contenteditable', true);
+
+        $currentTarget.focus();
+
+        if(!$currentTarget.hasClass('typing')){
+          if(tmp.trim() != '' && tmp != originalCnt){
+            $currentTarget.html(tmp);
+          }else{         
+            $currentTarget.find('.cursor.satisfaction').replaceWith('&#xf004;&nbsp;');
+            $currentTarget.find('.cursor.difficulty').replaceWith('&#xf0e7;&nbsp;');
+          }
+        }
+
+        if(original.trim() == ''){
+            $currentTarget.siblings('.original').html(originalCnt);
+        }
+console.log(Session.get('display_indications'));
+        if(Session.get('display_indications') !== false){
+          $('.indications').css('visibility', 'visible');
+        }else{
+          $('.indications').css('visibility', 'hidden');
+        }
+        
+  },
+  'mousedown .indications .validation' : function(event){
+    var $target = $(event.target),
+        $currentTarget = $(event.currentTarget);
+
+        $currentTarget.parents('.indications').find('.init').hide();
+        $currentTarget.parents('.indications').find('.response').css('display', 'inline-block');
+
+        Session.set('display_indications', false);
+       
+  },
+  'blur .editable' : function(event){
+      var $target = $(event.target),
+        $currentTarget = $(event.currentTarget),
+        original = $currentTarget.siblings('.original').html(),
+        tmp = $currentTarget.html();
+
+      $currentTarget.attr('contenteditable', false)
+                    .removeClass('typing')
+                    .html(original)
+                    .siblings('.tmp').html(tmp);
+
+      if(Session.get('display_indications') !== false ){
+        $('.indications').css('visibility', 'hidden');
+      }
+
+  },
+  'keyup .task' : function(event){
+    var $target = $(event.target),//li
+        $currentTarget = $(event.currentTarget);
+
+        $currentTarget.addClass('typing');
   }
 });
+
+Template['task-list'].for = function(count, options) {
+  var ret = "";
+
+  for(var i=0, j=count; i<j; i++) {
+    ret = ret + options.fn({count : count});
+  }
+
+  return ret;
+};
+
+Template['task-list'].printSatisfaction = function(count){
+
+  switch(count){
+      case 1:
+        return 'nice';
+      case 2:
+        return 'great';
+      case 3:
+        return 'i love it!';
+    }
+
+};
+
+Template['task-list'].printDifficulty = function(count){
+
+  switch(count){
+      case 1:
+        return 'easy';
+      case 2:
+        return 'feasible';
+      case 3:
+        return 'a real challenge!';
+    }
+
+};

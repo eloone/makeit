@@ -2,11 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Merriweather Sans', sans-serif !important;
-}
-
-input{
-  font-family: 'Merriweather Sans', sans-serif !important;
+  font-family: 'Merriweather Sans', sans-serif;
 }
 
 .side-pane{

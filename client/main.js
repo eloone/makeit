@@ -1,5 +1,6 @@
 Meteor.startup(function () {
   Backbone.history.start({pushState: true});
+  Session.set('display_indications', true);
 });
 
 Meteor.subscribe('userData');

@@ -1,3 +1,7 @@
+.tasks-lister{
+  font-family: 'Handlee', 'FontAwesome', cursive;
+}
+
 .task-list {
   margin: 20px 0;
   padding: 0;
@@ -9,14 +13,17 @@
   padding: 0 5px;
   list-style-type: none;
   line-height: 30px;
-  cursor: pointer;
-  font-family: 'Handlee', cursive;
+  cursor: text;
+  font-family: 'Handlee', 'FontAwesome', cursive;
   position:relative;
+  margin: 20px 0;
 }
 
 .task-list li:before{
   content:"-"; 
   position:relative; 
+  float:left;
+  margin-right:3px;
 }
 
 .task-list li a {
@@ -27,8 +34,8 @@
   padding:0 100px;
 }
 
-.task-list li:hover, .task-list .done {
-
+.task-list .done {
+  cursor:default;
 }
 
 .task-list li .infos {
@@ -95,4 +102,83 @@ transition-duration:400ms;
 
 .level-3 {
   opacity: 0.9;
+}
+
+.task-list .task{
+  outline: none;
+  position: relative;
+}
+
+.task-list .editable{
+  outline:none;
+  display:inline-block;
+  width:90%;
+}
+
+.task-list .editable[contenteditable=true]{
+
+}
+
+.task-list .cursor{
+  color : #EBC997;
+  font-size: 18px;
+  cursor:default;
+}
+
+.task-list .controls{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  display:none;
+  cursor:pointer;
+}
+
+.task-list .controls img{
+  margin-top: -10px;
+}
+
+.task-list li:hover .controls{
+  display:block;
+}
+
+.task-list .controls .uncheck{
+  position: relative;
+  z-index:2;
+}
+
+.tasks-lister .indications{
+  text-align: center;
+  font-size: 24px;
+  margin:30px 0;
+  visibility: hidden;
+  padding:5px;
+}
+
+.tasks-lister .indications .key{
+  padding:3px;
+  border:1px solid black;
+  border-radius: 5px;
+}
+
+.tasks-lister .indications .validation{
+  font-family: 'Handlee', 'FontAwesome', cursive;
+  font-size: 24px;
+  padding:10px;
+  background: rgb(217, 255, 121);
+}
+
+.tasks-lister .indications .validation:hover{
+    background: rgb(206, 243, 114);
+}
+
+.tasks-lister .indications .fa-comment{
+  margin-right:10px;
+}
+
+.tasks-lister .indications .response{
+  display:none;
+}
+
+.tasks-lister .interaction{
+  display: inline-block;
 }

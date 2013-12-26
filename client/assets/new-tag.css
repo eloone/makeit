@@ -1,0 +1,19 @@
+/*new tag*/
+
+.new-tag .input-wrapper{
+	padding:5px;	
+	text-transform: uppercase;
+	color: #08B8CF;
+	font-size: 21px;
+	margin-bottom:2px;
+	height:30px;
+	outline:none;
+}
+
+.new-tag .input{
+	outline:none;
+	position:relative;
+	z-index:1;
+	background:white;
+	padding:5px;
+}

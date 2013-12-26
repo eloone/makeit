@@ -22,9 +22,6 @@ Meteor.publish('userData', function () {
   return Meteor.users.find();
 });
 
-
-Meteor.methods({
-  getAvatar : function () {
-    return 'ok';
-  }
+Meteor.publish('tagData', function () {
+  return Tags.find({user : this.userId });
 });

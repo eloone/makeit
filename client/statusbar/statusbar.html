@@ -3,13 +3,21 @@
 	{{#if home}}
 	<p class="title">Your projects dashboard : admire your progress</p>
 	{{else}}
-		{{#each tag}}
-		<div class="category-status">
-			<span class="category">{{text}}</span>
-			<span style="width:{{progress}}%;" class="progress-tracker"></span>
-			{{> tag-data}}
-		</div>
-		{{/each}}
+		{{#if tag}}
+			{{#with tag}}
+			<div class="category-status">
+				<span class="{{#if isall}}isall{{/if}} category">{{label}}</span>
+				<span style="width:{{progress}}%;" class="progress-tracker"></span>
+				{{> tag-data}}
+			</div>
+			{{/with}}
+		{{else}}
+			{{#if new}}
+				{{> new-tag}}
+			{{else}}
+				404
+			{{/if}}
+		{{/if}}		
 	{{/if}}
 </div>
 </template>

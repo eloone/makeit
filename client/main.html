@@ -24,17 +24,11 @@
               {{> page-tag}}
             </div>
           {{else}}
-            {{> tag-list}}
+            {{#if new}}
+            {{else}}
+              {{> tag-list}}
+            {{/if}}            
         {{/if}}
-        <div class="span3">
-          {{!> tag-list}}
-        </div>
-        <div class="span9">
-          <div class="task-creator">
-            {{!> new-task}}
-          </div>
-        
-        </div>
       </div>
     </div>
     {{else}}

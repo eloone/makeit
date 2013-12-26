@@ -1,5 +1,5 @@
 // Return tasks
-getTasks = function (done) {
+/*getTasks = function (done) {
   if (! Meteor.user())
     return ;
 
@@ -8,55 +8,20 @@ getTasks = function (done) {
     done: done
   };
 
-  if (Session.get('tag'))
-    query.tags = Session.get('tag');
+  //if (Session.get('tag'))
+    //query.tags = Session.get('tag');
 
-  if(Session.get('tag') == 'all')
-    delete query.tags;
+  if (Session.get('tagId'))
+    query.tags = Session.get('tagId');
+
+  //if(Session.get('tag') == 'all')
+    //delete query.tags;
 
   // Sort first by decreasing satisfaction then increasing difficulty
   // Easy and short first
   return Tasks.find(query, {sort: {date: -1}});
-};
+};*/
 
-countTasks = function(done){
-  if (! Meteor.user())
-    return ;
-
-  var query = {
-    user: Meteor.user()._id,
-    done: done
-  };
-
-  if (Session.get('tag'))
-    query.tags = Session.get('tag');
-
-  if(Session.get('tag') == 'all')
-    delete query.tags;
-
-  // Sort first by decreasing satisfaction then increasing difficulty
-  // Easy and short first
-  return Tasks.find(query, {sort: {date: -1}}).count();
-};
-
-getTotalTasks = function(){
-  if (! Meteor.user())
-    return ;
-
-  var query = {
-    user: Meteor.user()._id
-  };
-
-  return Tasks.find(query, {sort: {date: -1}}).count();
-
-};
-
-getProgress = function(){
-  var count = countTasks(true);
-  var total = getTotalTasks();
-
-  return (count*100)/total;
-};
 
 //Returns suggested tasks
 getSuggestedTasks = function(){
@@ -132,11 +97,10 @@ Template['task-list'].events({
 
     var task = Tasks.findOne({_id: $line.data('id')});
 
-    // Update task (done/undone)
-    Tasks.update({_id: $line.data('id')}, {$set: {done: ! $line.hasClass('done')}}, function(){
-     
-        $('#_'+$line.data('id')+'.done .strike').css({width : '100%'});
-
+    Meteor.call('toggleDone', 
+    {
+      _id : $line.data('id'),
+      done : !$line.hasClass('done')
     });
 
     //checkReward(task.tags);
@@ -209,6 +173,8 @@ Template['task-list'].events({
         encodedTxt = encodeURIComponent($currentTarget.html()),     
         cursors = {};
         
+        $target.focus();
+
         difficulty = getCountChar('%EF%83%A7', encodedTxt);
         satisfaction = getCountChar('%EF%80%84', encodedTxt);
         
@@ -241,24 +207,22 @@ Template['task-list'].events({
 
           if(rawTxt == ''){
             //if no text + save = we delete the task
-            Tasks.remove({_id: $line.data('id')});
+            //Tasks.remove({_id: $line.data('id')});
+            //removeTask({_id : $line.data('id')});
+console.log('ready to remove');
+            Meteor.call('removeTask', {_id : $line.data('id')});
+
           }else{
             // Save task 
-            Tasks.update({_id: $line.data('id')}, {$set: toSave});
+            //Tasks.update({_id: $line.data('id')}, {$set: toSave});
+            //updateTask({_id: $line.data('id'), set : toSave});
+            Meteor.call('updateTask', {_id : $line.data('id'), set : toSave});
           }
         }
   }
 });
 
-Template['task-list'].for = function(count, options) {
-  var ret = "";
-
-  for(var i=0, j=count; i<j; i++) {
-    ret = ret + options.fn({count : count});
-  }
-
-  return ret;
-};
+Template['task-list'].for = For;
 
 Template['task-list'].printSatisfaction = function(count){
 

@@ -1,14 +1,20 @@
 <template name="tag-list">
   <div class="tag-list">
-    <div contenditable="true" class="input">
-    </div>
     <ul>
+      {{#with alltag}}
+        <li class="isall tag-item {{current}}">
+          <a title="you're at {{progress}}%" class="tag" href="/tag/{{alias}}">
+            <span class="tag-label">All items</span></a>
+          <span title="you're at {{progress}}%" style="width:{{progress}}%;" class="progress"></span>
+          {{> tag-data}}
+        </li>
+      {{/with}}
       {{#each tags}}
         <li class="tag-item {{current}}">
-          <a title="you're at {{progress}}%" class="tag" href="/tag/{{text}}">
+          <a title="you're at {{progress}}%" class="tag" href="/tag/{{alias}}">
             <span class="tag-label">{{label}}</span></a>
           <span title="you're at {{progress}}%" style="width:{{progress}}%;" class="progress"></span>
-         {{> tag-data}}
+          {{> tag-data}}
         </li>
       {{/each}}
     </ul>

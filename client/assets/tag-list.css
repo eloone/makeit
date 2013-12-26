@@ -17,6 +17,7 @@
   border: 1px solid #eee;
   padding:0 25px;
   height:62px;
+  text-transform: uppercase;
 }
 
 .tag-list .tag{
@@ -46,4 +47,11 @@
   box-shadow:none !important;
 }
 
+.tag-list .isall .progress{
+  background: #E9FC84;
+}
+
+.tag-list .isall:hover .progress{
+  background: #D8F154;
+}
 

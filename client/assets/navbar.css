@@ -160,3 +160,26 @@ text-align: center;
   color:#411202 !important;
 }
 
+.navbar .center svg{
+  margin-top:5px;
+}
+
+.navbar .output-box{
+  margin:5px;
+}
+
+.navbar .box{
+  background: rgb(255, 229, 147);
+  fill:rgb(255, 229, 147);
+  /*fill:rgb(251, 255, 153);*/
+}
+
+.navbar .output{
+  padding:15px;
+  display: inline-block;
+  margin-left:-5px;
+  vertical-align:top;
+  color:rgb(199, 64, 0);
+}
+
+

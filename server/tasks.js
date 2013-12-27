@@ -131,7 +131,7 @@ updateTask = function(task, session){
 		console.log('Missing data to set to update task');
 		return;
 	}
-console.log(task);
+
   var toUpdate = Tasks.findOne({_id : task._id});
 
   var hashtags = extractHashTags(task.set.text),
@@ -139,6 +139,11 @@ console.log(task);
       toSet = {};
 
       taskTags = _.uniq(taskTags);
+
+      //if no hashtags or all tag not present don't forget to always put the alltag id by default
+      if(_.isEmpty(taskTags) || _.indexOf(taskTags, alltagId) == -1){
+        taskTags = [alltagId];
+      }
 
       toSet = _.extend(task.set, {
         tags : taskTags,

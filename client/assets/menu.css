@@ -18,9 +18,29 @@
 
 .menu a{
 	display: block;
-	padding: 10px 30px 10px 30px;
+	padding: 10px 10px 10px 10px;
 	height:100%;
 	line-height: 30px;
+}
+
+.menu a.current{
+	/*padding: 10px 30px 10px 30px;*/
+}
+
+.menu.level2{
+	margin:0;
+	height:62px;
+}
+
+.menu.level2 a{
+	line-height:39px;
+	padding: 10px 5px 10px 5px;
+}
+
+.menu.level2 li{
+	margin-right: 0;
+	border-right: 1px solid white;
+	height:100%;
 }
 
 .menu .dashboard:hover,
@@ -37,23 +57,26 @@
 	color:#08B8CF;
 }
 
-.menu .all:hover,
-.menu .all.current{
-	background: rgb(153, 243, 255);
-	color:#08B8CF;
+.menu.level2 a{
+
 }
 
-.menu .all.current:hover{
+.menu.level2 a span{
+	background: rgb(153, 243, 255);
+	color:#08B8CF;
+	padding:5px;
+}
+
+.menu.level2 a:hover span{
 	background: rgb(125, 228, 241);
 }
 
-.menu .new:hover,
-.menu .new.current{
+.menu.level2 a.current span{
 	background:#FF3878;
 	color: #D0FA90;
 }
 
-.menu .new.current:hover{
+.menu.level2 a.current:hover span{
 	background: #EE336F;
 	color: #D0FA90;
 }

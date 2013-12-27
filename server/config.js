@@ -29,4 +29,3 @@ Meteor.publish('tagData', function () {
 Meteor.publish('tasksData', function () {
   return Tasks.find({user : this.userId });
 });
-   

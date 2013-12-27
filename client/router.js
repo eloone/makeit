@@ -17,16 +17,25 @@ router = new (Backbone.Router.extend({
   },
 
   tag: function (tag) {
+
     Session.set('tag', tag);
-    var currentTag = Tags.findOne({alias : tag});
-console.log(currentTag);
-    if(!_.isEmpty(currentTag)){
-      Session.set('tagId', currentTag._id);
-    }
-    else{
-      console.log('DB could not retrieve current tag in router');
-      Session.set('page404', true);
-    }
+
+    //i make a server call for this because local collection behaviour is really erratic - arfff
+    var currentTag;
+
+    Meteor.call('getCurrentTag', tag, function(err, result){
+      currentTag = result;
+      
+      if(!_.isUndefined(currentTag) && !_.isEmpty(currentTag)){
+        Session.set('tagId', currentTag._id);
+      }
+      else{
+        console.log('DB could not retrieve current tag in router');
+        Session.set('page404', true);
+      }
+
+    });
+    
   },
 
   notFound : function(){

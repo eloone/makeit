@@ -25,3 +25,8 @@ Meteor.publish('userData', function () {
 Meteor.publish('tagData', function () {
   return Tags.find({user : this.userId });
 });
+
+Meteor.publish('tasksData', function () {
+  return Tasks.find({user : this.userId });
+});
+   

@@ -82,6 +82,57 @@ Template['task-list'].doneTasks = function () {
   return getTasks(true);
 };
 
+Template['task-list'].printTags = function(tagIds, options){
+  var ret = '';
+
+  var tags = Tags.find(
+    {
+      _id : {
+        $in : tagIds,
+        $nin : [Session.get('tagId'), Session.get('alltagId')]
+      }
+    }).fetch();
+
+  _.each(tags, function(tag){
+    //we replace every space between words by - to render as it was first typed
+    ret = ret + options.fn({
+      label : tag.label.replace(/([^\s])(\s)([^\s])/g, '$1-$3'),
+      alias : tag.alias
+    });
+  });
+
+  return ret;
+};
+
+Template['task-list'].for = For;
+
+Template['task-list'].printSatisfaction = function(count){
+
+  switch(count){
+      case 1:
+        return 'nice';
+      case 2:
+        return 'great';
+      case 3:
+        return 'i love it!';
+    }
+
+};
+
+Template['task-list'].printDifficulty = function(count){
+
+  switch(count){
+      case 1:
+        return 'easy';
+      case 2:
+        return 'feasible';
+      case 3:
+        return 'a real challenge!';
+    }
+
+};
+
+
 Template['task-list'].events({
   'click .togglecheck': function (event) {
     var $target = $(event.target),//img
@@ -105,6 +156,9 @@ Template['task-list'].events({
 
     //checkReward(task.tags);
   },
+  'click .tag' : function(event){
+    //event.preventDefault();
+  },
   'click .editable, .editable .cursor' : function(event){
      var $target = $(event.target),
         $currentTarget = $(event.currentTarget),
@@ -112,28 +166,36 @@ Template['task-list'].events({
         original = $currentTarget.siblings('.original').html(),
         tmp = $currentTarget.siblings('.tmp').html();
 
-        $currentTarget.attr('contenteditable', true);
+        //if we don't click on tag
+        if(!$target.is('a')){
 
-        $currentTarget.focus();
+          $currentTarget.attr('contenteditable', true);
 
-        if(!$currentTarget.hasClass('typing')){
-          if(tmp.trim() != '' && tmp != originalCnt){
-            $currentTarget.html(tmp);
-          }else{         
-            $currentTarget.find('.cursor.satisfaction').replaceWith('&#xf004;&nbsp;');
-            $currentTarget.find('.cursor.difficulty').replaceWith('&#xf0e7;&nbsp;');
+          $currentTarget.focus();
+
+          if(!$currentTarget.hasClass('typing')){
+            if(tmp.trim() != '' && tmp != originalCnt){
+              $currentTarget.html(tmp);
+            }else{         
+              $currentTarget.find('.cursor.satisfaction').replaceWith('&#xf004;&nbsp;');
+              $currentTarget.find('.cursor.difficulty').replaceWith('&#xf0e7;&nbsp;');
+              $currentTarget.find('.tag').each(function(){
+                var itsContent = $(this).text();
+                $(this).replaceWith(itsContent);
+              });
+            }
           }
-        }
 
-        if(original.trim() == ''){
-            $currentTarget.siblings('.original').html(originalCnt);
-        }
+          if(original.trim() == ''){
+              $currentTarget.siblings('.original').html(originalCnt);
+          }
 
-        if(Session.get('display_indications') !== false){
-          $('.indications').css('visibility', 'visible');
-        }else{
-          $('.indications').css('visibility', 'hidden');
-        }
+          if(Session.get('display_indications') !== false){
+            $('.indications').css('visibility', 'visible');
+          }else{
+            $('.indications').css('visibility', 'hidden');
+          }
+      }
         
   },
   'mousedown .indications .validation' : function(event){
@@ -203,49 +265,20 @@ Template['task-list'].events({
                 text : rawTxt,
                 satisfaction : satisfaction,
                 difficulty : difficulty
+              },
+              session = {
+                tagId : Session.get('tagId'),
+                alltagId : Session.get('alltagId')
               };
 
           if(rawTxt == ''){
             //if no text + save = we delete the task
-            //Tasks.remove({_id: $line.data('id')});
-            //removeTask({_id : $line.data('id')});
-console.log('ready to remove');
             Meteor.call('removeTask', {_id : $line.data('id')});
 
           }else{
             // Save task 
-            //Tasks.update({_id: $line.data('id')}, {$set: toSave});
-            //updateTask({_id: $line.data('id'), set : toSave});
-            Meteor.call('updateTask', {_id : $line.data('id'), set : toSave});
+            Meteor.call('updateTask', {_id : $line.data('id'), set : toSave}, session);
           }
         }
   }
 });
-
-Template['task-list'].for = For;
-
-Template['task-list'].printSatisfaction = function(count){
-
-  switch(count){
-      case 1:
-        return 'nice';
-      case 2:
-        return 'great';
-      case 3:
-        return 'i love it!';
-    }
-
-};
-
-Template['task-list'].printDifficulty = function(count){
-
-  switch(count){
-      case 1:
-        return 'easy';
-      case 2:
-        return 'feasible';
-      case 3:
-        return 'a real challenge!';
-    }
-
-};

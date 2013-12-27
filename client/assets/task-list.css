@@ -126,6 +126,17 @@ transition-duration:400ms;
   cursor:default;
 }
 
+.task-list .tag{
+  padding: 0 2px;
+  background : #E2FF47;
+  color:#333;
+}
+
+.task-list .tag:hover{
+  text-decoration: none;
+  background:#C6DF3F;
+}
+
 .task-list .controls{
   position: absolute;
   right: 10px;

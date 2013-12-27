@@ -1,5 +1,6 @@
 Template['new-tag'].placeholder = function(){
-	return $('.placeholder').text();
+
+	return 'You can type your new goal here and press Enter to create it';
 };
 
 Template['new-tag'].events({
@@ -48,5 +49,5 @@ Template['new-tag'].events({
         	$target.html($target.siblings('.placeholder').html().trim());
         }
 	}
-
+ 
 });

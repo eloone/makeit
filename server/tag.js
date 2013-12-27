@@ -68,6 +68,12 @@ updateTag = function(options){
   return nbUpdated;
 };
 
+getCurrentTag = function(alias){
+	var tag = Tags.findOne({alias : alias});
+
+	return tag;
+};
+
 //Helper functions for update
 toSet = function(options){
 	var toSet = {};

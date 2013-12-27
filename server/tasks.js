@@ -2,7 +2,7 @@
 //You can add a task 1. from a tag page 2. from the all page
 addTask = function (options, session) {
   var tagId = session.tagId,
-      alltagId = session.alltagId || null
+      alltagId = session.alltagId || null,
       hashtags = extractHashTags(options.text),
       task = options,
       taskTags =[];
@@ -40,7 +40,27 @@ addTask = function (options, session) {
 	  }
 
     //we add tags present in hashtags[]
-    if(!_.isEmpty(hashtags)){
+    taskTags = addHashtags(hashtags, taskTags, tagId, alltagId);
+
+    if(_.isEmpty(taskTags)){
+      taskTags = getFamilyIds(tagId);
+    }
+
+    //we remove duplicates here although $addToSet removes duplicates too
+    taskTags = _.uniq(taskTags);
+
+    //Finally we attach all the tags to the task
+    //Current tag + its parents + hashtags + its parents
+   Tasks.update({_id : insertedId}, { $addToSet : {tags : {$each : taskTags} }});
+};
+
+//Returns array of tag ids to be added to task
+addHashtags = function(hashtags, taskTags, tagId, alltagId){
+  if(_.isUndefined(taskTags)){
+    var taskTags = [];
+  }
+
+  if(!_.isEmpty(hashtags)){
       _.each(hashtags, function(tag){
 
         var aliasForm = getAlias(tag);
@@ -57,20 +77,13 @@ addTask = function (options, session) {
             //taskTags will contain duplicates at this point
             taskTags = taskTags.concat(getFamilyIds(newTagId));
            }
+          }else{
+            taskTags = taskTags.concat(getFamilyIds(existingTag._id));
           }
       });
     }
 
-    if(_.isEmpty(taskTags)){
-      taskTags = getFamilyIds(tagId);
-    }
-
-    //we remove duplicates here although $addToSet removes duplicates too
-    taskTags = _.uniq(taskTags);
-
-    //Finally we attach all the tags to the task
-    //Current tag + its parents + hashtags + its parents
-   Tasks.update({_id : insertedId}, { $addToSet : {tags : {$each : taskTags} }});
+    return taskTags;
 };
 
 //returns number of removed elements
@@ -105,7 +118,10 @@ toggleDone = function(task){
 
 //Updates a task with set 
 //Returns nb of updated rows
-updateTask = function(task){
+updateTask = function(task, session){
+  var tagId = session.tagId,
+      alltagId = session.alltagId || null;
+
 	if(_.isUndefined(task._id)){
 		console.log('Missing id to update task');
 		return;
@@ -115,8 +131,21 @@ updateTask = function(task){
 		console.log('Missing data to set to update task');
 		return;
 	}
+console.log(task);
+  var toUpdate = Tasks.findOne({_id : task._id});
 
-	var updated = Tasks.update({_id: task._id}, {$set: task.set});
+  var hashtags = extractHashTags(task.set.text),
+      taskTags = addHashtags(hashtags, [], tagId, alltagId),
+      toSet = {};
+
+      taskTags = _.uniq(taskTags);
+
+      toSet = _.extend(task.set, {
+        tags : taskTags,
+        text : stripHashTags(task.set.text)
+      });
+
+	var updated = Tasks.update({ _id: task._id }, { $set: toSet });
 
   return updated;
 };

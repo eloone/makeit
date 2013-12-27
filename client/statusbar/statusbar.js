@@ -1,7 +1,12 @@
 Template['statusbar'].tag = function(){
+	var tagId = Session.get('tagId');
+	if(!tagId){
+		return;
+	}
+	
 	var tag = Tags.findOne({_id : Session.get('tagId')});
-	 //console.log('statusbar tag');
-	 //console.log(tag);
+	 console.log('statusbar tag');
+	 console.log(tag);
 	var formatted = formatTags(tag);
 
 	if(_.isUndefined(formatted))

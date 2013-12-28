@@ -3,14 +3,16 @@ Template['statusbar'].tag = function(){
 	if(!tagId){
 		return;
 	}
-	
+
 	var tag = Tags.findOne({_id : Session.get('tagId')});
-	 console.log('statusbar tag');
-	 console.log(tag);
+
 	var formatted = formatTags(tag);
 
 	if(_.isUndefined(formatted))
     	return[];
+
+    Session.set('tagSatisfaction', formatted[0].satisfaction);
+    Session.set('tagDifficulty', formatted[0].difficulty);
 
 	return formatted[0];
 };

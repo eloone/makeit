@@ -5,6 +5,7 @@ router = new (Backbone.Router.extend({
     '/'       : 'index',
     'new'     : 'new',
     'tag/:tag': 'tag',
+    'tag/:tag/orderby/:filter': 'tag',
     '*notFound': 'notFound'
   },
 
@@ -16,7 +17,7 @@ router = new (Backbone.Router.extend({
     Session.set('new', true);
   },
 
-  tag: function (tag) {
+  tag: function (tag, filter) {
 
     Session.set('tag', tag);
 
@@ -35,6 +36,12 @@ router = new (Backbone.Router.extend({
       }
 
     });
+
+    if(!_.isUndefined(filter)){
+      Session.set('filter', filter);
+    }else{
+      Session.set('filter', 'default');
+    }
     
   },
 

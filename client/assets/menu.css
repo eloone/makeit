@@ -43,6 +43,59 @@
 	height:100%;
 }
 
+.menu.level3 li{
+	height:30px;
+	background: none;
+	margin:0 5px;
+}
+
+.menu.level3 li.current,
+.menu.level3 li:hover{
+	border:1px solid black;
+}
+
+.menu.level3 a{
+	padding:5px;
+	line-height:20px;
+	color:black;
+}
+
+.menu.level3 a:hover{
+	color:black;
+}
+
+.menu.level3 .current .orderAsc .asc,
+.menu.level3 .current:hover .orderAsc .desc{
+	display:inline;
+}
+
+.menu.level3 .current:hover .orderAsc .asc,
+.menu.level3 .current .orderAsc .desc{
+	display:none;
+}
+
+.menu.level3 .current .orderDesc .desc,
+.menu.level3 .current:hover .orderDesc .asc{
+	display:inline;
+}
+
+.menu.level3 .current:hover .orderDesc .desc,
+.menu.level3 .current .orderDesc .asc{
+	display:none;
+}
+
+.menu.level3 a.orderDesc:hover .desc{
+	display:inline;
+}
+
+.menu.level3 a.orderAsc:hover .asc{
+	display:inline;
+}
+
+.menu.level3 .sort{
+	display:none;
+}
+
 .menu .dashboard:hover,
 .menu .dashboard.current{
 	background:#E2FF47;

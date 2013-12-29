@@ -10,8 +10,6 @@ getTasks = function (done) {
       //date,fun,difficulty,default
       filter = Session.get('filter'),
       order = Session.get(filter+'Desc') === true || _.isUndefined(Session.get(filter+'Desc')) ? 'desc' : 'asc';
-console.log(Session.get(filter+'Desc'));
-      console.log(filter);
 
       switch(filter){
         case 'fun':

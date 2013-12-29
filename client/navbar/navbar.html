@@ -20,23 +20,7 @@
             </div>
         </div>
         <div class="pull-right user">          
-          <div class="infos">
-            <div class="inline-menu greeting">
-              <span class="pull-left user-profile user-profile-text">You can do it</span>
-              <p class="pull-left with-score user-profile user-greeting">
-                {{#if avatar}}
-                    <img src="{{avatar}}" width="32" height="32">
-                {{/if}}
-                <span class="user-name">
-                  {{currentUser.profile.name}}
-                  <span class="score">236</span>
-                </span>
-                </br>
-                <a href="#" class="logout-link">logout</a>
-              </p>
-              <span class="pull-left user-profile-text">!</span>
-            </div>
-          </div>
+          {{> navbar-user}}
         </div>
       </div>
     </div>

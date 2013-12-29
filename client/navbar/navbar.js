@@ -1,8 +1,3 @@
-Template.navbar.avatar = function () {
-  getGooglePicture();
-  return Session.get('avatar');
-};
-
 Template.navbar.tag = function(){
   return Session.get('tag') || 'All';
 

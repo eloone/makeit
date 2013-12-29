@@ -1,14 +1,5 @@
 Meteor.startup(function () {
 	// code to run on server at startup
-
-	var alltag = Tags.findOne({alias : 'all', user : Meteor.userId});
-
-	if(_.isUndefined(alltag) || _.isEmpty(alltag)){
-		addTag({
-			label : 'all'
-		});
-	}
-
 	Meteor.methods({
 	  //method to insert a tag	
 	  addTag : addTag,
@@ -22,9 +13,42 @@ Meteor.startup(function () {
   	  removeTask : removeTask,
   	  updateTask : updateTask,
   	  toggleDone : toggleDone,
-  	  getCurrentTag : getCurrentTag
+  	  getCurrentTag : getCurrentTag,
+  	  initAllTag : initAllTag,
+  	  initPoints : initPoints
 	});
 
 });
+
+initAllTag = function(userId){
+	var alltag = Tags.findOne({alias : 'all', user : userId}),
+		alltagId;
+
+	if(_.isUndefined(alltag) || _.isEmpty(alltag)){
+		alltagId = addTag({
+			label : 'all'
+		});
+	}
+
+	return alltagId;
+};
+
+initPoints = function(userId){
+	var points = Points.findOne({user : userId}),
+		pointsId;
+
+	if(_.isUndefined(points) || _.isEmpty(points)){
+		var pointsData = getPointsData();
+
+		pointsId = Points.insert(_.extend(
+			{
+				user : userId
+			}, 
+			pointsData
+		));
+	} 
+
+	return pointsId;
+};
 
 

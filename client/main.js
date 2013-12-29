@@ -1,6 +1,7 @@
 Meteor.startup(function () {
 
 	Backbone.history.start({pushState: true});
+	console.log(Points.find().fetch());
 
 });
 

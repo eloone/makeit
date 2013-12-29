@@ -15,3 +15,7 @@ Session.set('tagsReady', true);
 Meteor.subscribe('tasksData', function(){
 	Session.set('tasksReady', true);
 });
+
+Meteor.subscribe('pointsData', function(){
+	Session.set('pointsReady', true);
+});

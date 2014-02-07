@@ -11,7 +11,13 @@
 		
 		function startAnimation(){
 			
-			document.getElementById('loaderImage').innerHTML='<canvas id="canvas" width="'+cWidth+'" height="'+cHeight+'"><p>Your browser does not support the canvas element.</p></canvas>';
+			var loader = document.getElementById('loaderImage');
+
+			if(!loader){
+				return;
+			}
+				
+			loader.innerHTML='<canvas id="canvas" width="'+cWidth+'" height="'+cHeight+'"><p>Your browser does not support the canvas element.</p></canvas>';
 			
 			//FPS = Math.round(100/(maxSpeed+2-speed));
 			FPS = Math.round(100/cSpeed);

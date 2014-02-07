@@ -8,6 +8,7 @@
 
 <body>
     {{> main}}
+    <footer>Makeit &#169; 2014 | Alpha version designed and developed by <a target="_blank" href="https://github.com/eloone/makeit">eloone</a></footer>
 </body>
 
 <template name="main">
@@ -16,7 +17,7 @@
   {{else}}
     {{#if currentUser}}
      {{> header}}
-    <div class="container">  
+    <div id="main" class="container">  
       <div class="row-fluid">
         {{#if tag}}
             <div class="tasks-lister">

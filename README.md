@@ -20,3 +20,7 @@ Add line to `/etc/hosts` : `127.0.0.1 makeitdev.meteor.com`
 ```
 export ROOT_URL='http://makeitdev.meteor.com:3000'; meteor
 ```
+
+# Rationale
+
+<http://projects.elodierafali.com/make-it-151>

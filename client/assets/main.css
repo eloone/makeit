@@ -35,7 +35,7 @@ html, body {
   z-index: 2;
 }
 
-body > .container{
+.site > .container{
   margin-top: 150px;
 }
 
@@ -43,6 +43,10 @@ body > .container{
   width:100%;
   height:25px;
 } 
+
+.site{
+  height:100%;
+}
 
 footer{
   padding:10px;

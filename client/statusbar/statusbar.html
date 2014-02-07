@@ -1,7 +1,7 @@
 <template name="statusbar">
 <div class="statusbar">
-	{{#if home}}
-	<p class="title">Your projects dashboard : admire your progress</p>
+	{{#if dashboard}}
+	<p class="title">Your projects dashboard : visualize your progress</p>
 	{{else}}
 		{{#if tag}}
 			{{#with tag}}
@@ -14,8 +14,9 @@
 		{{else}}
 			{{#if new}}
 				{{> new-tag}}
-			{{else}}
-				404
+			{{/if}}
+			{{#if stats}}
+			<p class="title">Your stats : see your achievements</p>
 			{{/if}}
 		{{/if}}		
 	{{/if}}

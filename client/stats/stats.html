@@ -1,0 +1,105 @@
+<template name="user-stats">
+{{#with score}}
+<div class="user-stats">
+	<ul class="stats-box stats-overall">
+		<li class="box-title">
+			<span>Overall</span>
+		</li>
+		<li class="field done">
+			<span class="title">Done </span>
+			<span class="value">{{done}}</span>
+		</li>
+		<li class="field satisfaction">
+			<p class="data">
+				<span class="title">Satisfaction</span>
+				<span class="value">{{points}}</span>
+			</p>
+			<div class="caption">Satisfaction points are calculated like that :
+				<p>- <i class="fa fa-bolt"></i> = 5 pts | <i class="fa fa-bolt"></i> <i class="fa fa-bolt"></i>  = 10 pts | <i class="fa fa-bolt"></i> <i class="fa fa-bolt"></i> <i class="fa fa-bolt"></i> = 20 pts</p>
+				<p>- <i class="fa fa-heart"></i> = 5 pts | <i class="fa fa-heart"></i> <i class="fa fa-heart"></i>  = 10 pts | <i class="fa fa-heart"></i> <i class="fa fa-heart"></i> <i class="fa fa-heart"></i> = 20 pts</p>
+				<p>
+				- completing a task attached to a goal = 30 points
+				</p>
+				<p>
+				- completing a bare task = 1 point
+				</p>
+			</div>
+		</li>
+	</ul>
+	<ul class="stats-box stats-difficulty">
+		<li class="box-title"><span>Difficulty</span></li>
+		<li class="field challenge">
+			<span class="title">Challenges</span>
+			<span class="value">{{difficulty.level3}}</span>
+			<span class="cursor">
+				{{#for 3}}
+					{{> bolt}}
+				{{/for}}
+			</span>
+			<div class="caption">
+				Challenges are tasks that required paramount efforts from you, both psychologically and physically. It usually requires courage and perseverance to achieve them.
+			</div>
+		</li>
+		<li class="field tedious">
+			<span class="title">Tedious</span>
+			<span class="value">{{difficulty.level2}}</span>
+			<span class="cursor">
+				{{#for 2}}
+					{{> bolt}}
+				{{/for}}
+			</span>
+		</li>
+		<li class="field easy">
+			<span class="title">Easy</span>
+			<span class="value">{{difficulty.level1}}</span>
+			<span class="cursor">
+				{{#for 1}}
+					{{> bolt}}
+				{{/for}}
+			</span>
+		</li>
+		<li class="field piece-of-cake">
+			<span class="title">Piece of Cake</span>
+			<span class="value">{{difficulty.level0}}</span>
+		</li>
+	</ul>
+	<ul class="stats-box stats-fun">				
+		<li class="box-title"><span>Fun</span></li>
+		<li class="field blast">
+			<span class="title">Blasts</span>
+			<span class="value">{{satisfaction.level3}}</span>
+			<span class="cursor">
+				{{#for 3}}
+					{{> heart}}
+				{{/for}}
+			</span>
+			<div class="caption">
+				Blasts are things you have done that brought enormous happiness in your life.
+			</div>
+		</li>
+		<li class="field fun">
+			<span class="title">Fun</span>
+			<span class="value">{{satisfaction.level2}}</span>
+			<span class="cursor">
+				{{#for 2}}
+					{{> heart}}
+				{{/for}}
+			</span>
+		</li>
+		<li class="field nice">
+			<span class="title">Nice</span>
+			<span class="value">{{satisfaction.level1}}</span>
+			<span class="cursor">
+				{{#for 1}}
+					{{> heart}}
+				{{/for}}
+			</span>
+		</li>
+		<li class="field neutral">
+			<span class="title">Neutral</span>
+			<span class="value">{{satisfaction.level0}}</span>
+		</li>
+	</ul>
+</div>
+{{/with}}
+</template>

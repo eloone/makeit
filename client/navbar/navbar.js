@@ -25,5 +25,6 @@ Template.navbar.events({
   'click .logout-link': function (event) {
     event.preventDefault();
     Meteor.logout();
+    Backbone.history.navigate('/');
   }
 });

@@ -11,13 +11,25 @@
 
 .tag-list .tag-item{
   list-style-type: none;
-  background: white;
   margin-bottom: 2px;
   position: relative;
-  border: 1px solid #eee;
   padding:0 25px;
   height:62px;
   text-transform: uppercase;
+}
+
+.tag-list .tag-item a:hover{
+  text-decoration: none;
+  color: #08B8CF;
+}
+
+.tag-list .tag-item:hover{
+  background: rgba(255,255,255, 0.3);
+}
+
+.tag-list .tag-item .tag-label{
+  background: white;
+  padding:5px;
 }
 
 .tag-list .tag{

@@ -1,28 +1,3 @@
-// Return tasks
-/*getTasks = function (done) {
-  if (! Meteor.user())
-    return ;
-
-  var query = {
-    user: Meteor.user()._id,
-    done: done
-  };
-
-  //if (Session.get('tag'))
-    //query.tags = Session.get('tag');
-
-  if (Session.get('tagId'))
-    query.tags = Session.get('tagId');
-
-  //if(Session.get('tag') == 'all')
-    //delete query.tags;
-
-  // Sort first by decreasing satisfaction then increasing difficulty
-  // Easy and short first
-  return Tasks.find(query, {sort: {date: -1}});
-};*/
-
-
 //Returns suggested tasks
 getSuggestedTasks = function(){
     if (! Meteor.user())
@@ -84,7 +59,7 @@ Template['task-list'].doneTasks = function () {
 
 Template['task-list'].printTags = function(tagIds, options){
   var ret = '';
-
+  
   var tags = Tags.find(
     {
       _id : {
@@ -152,9 +127,12 @@ Template['task-list'].events({
     {
       _id : $line.data('id'),
       done : !$line.hasClass('done')
+    }, function(err, res){
+      if(res){
+        checkReward($line.data('id'));
+      }
     });
 
-    //checkReward(task.tags);
   },
   'click .tag' : function(event){
     //event.preventDefault();

@@ -17,12 +17,13 @@ Template['new-tag'].events({
         	var alltag = Tags.findOne({alias : 'all'});
 
         	//calls method addTag on the server
-        	Meteor.call('addTag', {label : $target.text(), parent : alltag._id}, 
+        	Meteor.call('addTag', {label : $target.text(), parent : alltag._id, user : Meteor.userId()}, 
         		function(err, id){
 	        		if(id){
 	        			var newtag = Tags.findOne({_id : id});
 
-	        			window.location.href = '/tag/'+newtag.alias;
+	        			//window.location.href = '/tag/'+newtag.alias;
+                                        Backbone.history.navigate('/tag/'+newtag.alias, true);
 	        		}
         		}
         	);

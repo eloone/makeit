@@ -1,10 +1,11 @@
 Template['statusbar'].tag = function(){
 	var tagId = Session.get('tagId');
+
 	if(!tagId){
 		return;
 	}
 
-	var tag = Tags.findOne({_id : Session.get('tagId')});
+	var tag = Tags.findOne({_id : tagId});
 
 	var formatted = formatTags(tag);
 
@@ -17,12 +18,16 @@ Template['statusbar'].tag = function(){
 	return formatted[0];
 };
 
+Template['statusbar'].stats = function(){
+	return Session.get('stats');
+};
+
 Template['statusbar'].new = function(){
 	return Session.get('new');
 };
 
-Template['statusbar'].home = function(){
-	return Session.get('home');
+Template['statusbar'].dashboard = function(){
+	return Session.get('dashboard');
 };
 
 Template['statusbar'].isall = function(){

@@ -70,7 +70,8 @@ addHashtags = function(hashtags, taskTags, tagId, alltagId){
           if(_.isEmpty(existingTag)){
            var newTagId =  addTag({               
               label : getLabelFromHash(tag),
-              parent : tagId || alltagId        
+              parent : tagId || alltagId,
+              user : Meteor.user()._id
             });
 
            if(newTagId){
@@ -143,6 +144,9 @@ updateTask = function(task, session){
       //if no hashtags or all tag not present don't forget to always put the alltag id by default
       if(_.isEmpty(taskTags) || _.indexOf(taskTags, alltagId) == -1){
         taskTags = [alltagId];
+        if(_.indexOf(taskTags, tagId) && tagId != alltagId){
+          taskTags.push(tagId);
+        }
       }
 
       toSet = _.extend(task.set, {

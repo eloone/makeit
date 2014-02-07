@@ -9,8 +9,13 @@ addTag = function (options) {
   if(_.isEmpty(options.label))
     return;
 
+  /*if(_.isUndefined(options.user)){
+    console.log('userId is undefined to create tag '+options.label);
+    return;
+  }*/
+
   //alias must be unique but i don't know how to unique : true in meteor
-  var tag = Tags.findOne({alias : getAlias(options.label)});
+  var tag = Tags.findOne({alias : getAlias(options.label), user : options.user});
 
   if(tag){
   	console.log('Did not add task '+options.label+' because it is a duplicate');
@@ -20,13 +25,19 @@ addTag = function (options) {
   var newtagId = Tags.insert(
   	_.extend({
 	    date: new Date(),
-	    user: Meteor.user()._id,
 	    parent : null,
-	    label : options.label
+	    label : options.label,
 	  }, options, {
 	    alias : getAlias(options.label)
 	  })
   );
+
+  if(newtagId){
+    console.log('Tag '+options.label+' was created.');
+  }
+
+  var tagnew = Tags.find({_id:newtagId}).fetch();
+  console.log(tagnew);
 
   return newtagId;
 };
@@ -72,6 +83,12 @@ getCurrentTag = function(alias){
 	var tag = Tags.findOne({alias : alias});
 
 	return tag;
+};
+
+getAllTag = function(){
+  var tag = Tags.findOne({alias : 'all'});
+
+  return tag;
 };
 
 //Helper functions for update

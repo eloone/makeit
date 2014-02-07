@@ -1,0 +1,32 @@
+.user-box{
+	position:relative;
+	padding:5px;
+}
+
+.user-box .score {
+	margin:5px 0 0 0;
+	position: relative;
+	z-index: 1;
+}
+
+.user-box .score li{
+	list-style-type: none;
+	display:inline-block; 
+	border-radius: 20px;
+	padding:0px 6px;
+	font-size:12px;
+	background: #0ECEF1;
+	cursor: default;
+}
+
+.user-box .block-link{
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+}
+
+.user-box .block-link:hover{
+	background: rgba(6, 120, 141, 0.2);
+}

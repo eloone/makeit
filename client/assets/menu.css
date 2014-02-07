@@ -29,7 +29,9 @@
 
 .menu.level2{
 	margin:0;
-	height:62px;
+	height:60px;
+	padding-left:25px;
+	background:rgba(255, 255, 255, 0.5);
 }
 
 .menu.level2 a{
@@ -41,6 +43,11 @@
 	margin-right: 0;
 	border-right: 1px solid white;
 	height:100%;
+	background: none;
+}
+
+.menu.level3{
+	margin-right:25px;
 }
 
 .menu.level3 li{

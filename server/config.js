@@ -14,16 +14,20 @@ Accounts.loginServiceConfiguration.remove({
 
 Accounts.loginServiceConfiguration.insert({
     service: 'google',
-    clientId  : '338173709823',
-    secret : '0nHm7G7tSjlKa1hZVGRKeysN'
+    clientId  : '1099077874388',//'338173709823',
+    secret : 'M5DS8M7XnOpzH5sW-SENLUbM'//'0nHm7G7tSjlKa1hZVGRKeysN'
 });
 
-Meteor.publish('userData', function () {
-  return Meteor.users.find();
+Meteor.publish('userData', function() {
+  return Meteor.users.find({_id : this.userId});
 });
 
 Meteor.publish('tagData', function () {
   return Tags.find({user : this.userId });
+});
+
+Meteor.publish('tagAll', function () {
+  return Tags.find({alias : 'all' });
 });
 
 Meteor.publish('tasksData', function () {

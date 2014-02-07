@@ -1,3 +1,8 @@
+Template['menu-level3'].tag = function(){
+	return Session.get('tag');
+};
+
+
 Template['menu-level3'].default = function(){
 	return Session.equals('filter', 'default');
 };

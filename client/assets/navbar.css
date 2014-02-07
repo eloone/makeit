@@ -6,6 +6,10 @@
   position: relative;
 }
 
+.navbar .container{
+  margin-bottom:5px;
+}
+
 .navbar .user a{
   color:#411202;
 }
@@ -108,7 +112,7 @@ text-align: center;
   line-height:48px;
 }
 
-.with-score .user-name{
+.with-score .user-box{
   margin-top:5px;
   display:inline-block;
   vertical-align:top;
@@ -132,6 +136,7 @@ text-align: center;
 
 .user-greeting:hover .logout-link{
   display:block;
+  margin-top: 5px;
 }
 
 .logout-link{
@@ -169,9 +174,8 @@ text-align: center;
 }
 
 .navbar .box{
-  background: rgb(255, 229, 147);
-  fill:rgb(255, 229, 147);
-  /*fill:rgb(251, 255, 153);*/
+  background: #EED8A9;
+  fill:#EED8A9;
 }
 
 .navbar .output{
@@ -179,7 +183,7 @@ text-align: center;
   display: inline-block;
   margin-left:-5px;
   vertical-align:top;
-  color:rgb(199, 64, 0);
+  color:#5A473C;
 }
 
 

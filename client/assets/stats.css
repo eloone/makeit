@@ -1,0 +1,63 @@
+.user-stats{
+	font-size:24px;
+	margin-left: 30px;
+	font-family: 'Handlee', 'FontAwesome', cursive;
+	overflow:hidden;
+	margin-top: 30px;
+}
+
+.user-stats li{
+	overflow: hidden;
+	padding:15px;
+}
+
+.user-stats .label{
+	float: left;
+}
+
+.user-stats .value{
+	border-radius:20px;
+	padding:0 10px;
+	background: #EED8A9;
+}
+
+.user-stats .done .value{
+	background: #D8F541;
+}
+
+.user-stats .satisfaction .value{
+	background: #D8F541;
+}
+
+.user-stats .blast .value,
+.user-stats .challenge .value{
+	background: #F85D5D;
+}
+
+.user-stats .stats-box{
+	float: left;
+	width: 31%;
+}
+
+.user-stats .stats-box .box-title{
+	padding:5px;
+	background: rgb(153, 243, 255);
+	display: inline-block;
+	margin-bottom:25px;
+}
+
+.user-stats .caption{
+	font-size: 14px;
+	padding:10px;
+	background: #EED8A9;
+	font-family: 'Merriweather Sans', sans-serif;
+	color:#5A473C;
+	border-radius:10px;
+	margin-top: 15px;
+}
+
+.user-stats .cursor{
+	color: #CFAA81;
+	font-size: 14px;
+	float: right;
+}

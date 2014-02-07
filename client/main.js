@@ -1,7 +1,6 @@
 Meteor.startup(function () {
 
 	Backbone.history.start({pushState: true});
-	console.log(Points.find().fetch());
 
 });
 
@@ -9,8 +8,8 @@ Template.main.page404 = function(){
 	return Session.get('page404');
 };
 
-Template.main.home = function(){
-	return Session.get("home");
+Template.main.dashboard = function(){
+	return Session.get("dashboard");
 };
 
 Template.main.tag = function(){
@@ -19,4 +18,8 @@ Template.main.tag = function(){
 
 Template.main.new = function(){
 	return Session.get("new");
+};
+
+Template.main.stats = function(){
+	return Session.get("stats");
 };

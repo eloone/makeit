@@ -7,8 +7,7 @@ Template['tag-list'].tags = function () {
   }
 
   var tags = Tags.find({parent : alltagid, _id : {$not : alltagid}}).fetch();
-  console.log('tag-list tags');
-  console.log(alltagid);
+
   var formatted = formatTags(tags);
 
   if(_.isUndefined(formatted))
@@ -25,7 +24,7 @@ Template['tag-list'].alltag = function () {
   }
 
   var alltag = Tags.findOne({_id : alltagid});
-   console.log('tag-list alltag');
+
   var formatted = formatTags(alltag);
   if(_.isUndefined(formatted))
     return[];

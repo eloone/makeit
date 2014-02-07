@@ -22,16 +22,23 @@
             <div class="tasks-lister">
               {{> page-tag}}
             </div>
-          {{else}}
+        {{else}}
             {{#if new}}
-            {{else}}
+            {{/if}}
+            {{#if dashboard}}
               {{> tag-list}}
-            {{/if}}            
+            {{/if}}
+            {{#if stats}}
+              {{> user-stats}}
+            {{/if}}        
         {{/if}}
       </div>
     </div>
     {{else}}
-      {{> login}}
+      {{#if loggingIn}}
+        {{else}}
+          {{> login}}
+      {{/if}}
     {{/if}}
   {{/if}}
 </template>

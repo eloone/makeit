@@ -104,7 +104,7 @@ getCursorPoints = function(cursor){
 };
 
 //gets init data to set Points collection
-getPointsData = function(){
+getPointsData = function(userId){
 	var res = {
 		difficulty : {
 			level0 : 0,
@@ -121,9 +121,12 @@ getPointsData = function(){
 		done : 0,
 		points : 0
 	};
+console.log('getPointsData');
+console.log('userId:');
+console.log(userId);
 
 	var tasks = Tasks.find({
-		user : Meteor.userId,
+		user : userId,
 		done : true
 	}).fetch();
 

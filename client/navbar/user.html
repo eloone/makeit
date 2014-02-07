@@ -2,22 +2,37 @@
 <div class="infos">
   <div class="inline-menu greeting">
     <span class="pull-left user-profile user-profile-text">You can do it</span>
-    <p class="pull-left with-score user-profile user-greeting">
+    <div class="pull-left with-score user-profile user-greeting">
       {{#if avatar}}
           <img src="{{avatar}}" width="32" height="32">
       {{/if}}
-      <span class="user-name">
-        {{currentUser.profile.name}}
-        <span class="score">236</span>
-        <ul>
-          {{#with points}}
-            <li>{{done}}</li>
-          {{/with}}
-        </ul>
-      </span>
+      <div class="user-box">
+        {{#if currentUser.profile.name}}
+          {{currentUser.profile.name}}
+          {{else}}
+          {{email}}
+        {{/if}}
+        {{#with score}}
+          <ul class="score">
+            {{#if done}}
+              <li title="{{done}} done" class="count-done">{{done}}</li>
+            {{/if}}
+            {{#if points}}
+              <li title="{{points}} satisfaction points" class="count-points">{{points}}</li>
+            {{/if}}
+            {{#if difficulty.level3}}
+              <li title="{{difficulty.level3}} challenges" class="count-challenges">{{difficulty.level3}} <i class="fa fa-bolt"></i></li>
+            {{/if}}
+            {{#if satisfaction.level3}}
+              <li title="{{satisfaction.level3}} blasts" class="count-fun">{{satisfaction.level3}}<i class="fa fa-heart"></i></li>
+            {{/if}}
+          </ul>
+        {{/with}}
+        <a class="block-link" href="/user-stats"></a>
+      </div>
       </br>
       <a href="#" class="logout-link">logout</a>
-    </p>
+    </div>
     <span class="pull-left user-profile-text">!</span>
   </div>
 </div>

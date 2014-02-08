@@ -12,10 +12,7 @@ router = new (Backbone.Router.extend({
   },
 
   index: function(){
-    console.log('in router user');
-    console.log(Session.get('userReady'));
-    console.log(Meteor.user());
-var router = this;
+  var router = this;
     //Meteor.call('getCurrentUser', function(user){
       //router.navigate('/tag/all', true);
     //});

@@ -35,7 +35,7 @@ html, body {
   z-index: 2;
 }
 
-.site > .container{
+.site > .main{
   margin-top: 150px;
 }
 
@@ -46,16 +46,21 @@ html, body {
 
 .site{
   height:100%;
+  position: relative;
+  overflow: auto;
 }
 
 footer{
   padding:10px;
   height:20px;
-  bottom:0;
-  position: absolute;
   color:#5A473C;
   font-size:12px;
-  right:0;
   width:100%;
   text-align:center;
+  margin-top:30px;
+  bottom:0;
+}
+
+footer.absolute{
+  position: absolute;
 }

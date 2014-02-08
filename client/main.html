@@ -7,17 +7,19 @@
 </head>
 
 <body>
-    {{> main}}
+    <div class="site">
+      {{> main}}
+      <footer>Makeit &#169; 2014 | Alpha version designed and developed by <a target="_blank" href="https://github.com/eloone/makeit">eloone</a></footer>
+    </div>
 </body>
 
 <template name="main">
-  <div class="site">
   {{#if page404}}
   404
   {{else}}
     {{#if currentUser}}
      {{> header}}
-    <div id="main" class="container">  
+    <div id="main" class="container main">  
       <div class="row-fluid">
         {{#if tag}}
             <div class="tasks-lister">
@@ -43,6 +45,4 @@
       {{/if}}
     {{/if}}
   {{/if}}
-    <footer>Makeit &#169; 2014 | Alpha version designed and developed by <a target="_blank" href="https://github.com/eloone/makeit">eloone</a></footer>
-  </div>
 </template>

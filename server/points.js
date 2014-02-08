@@ -190,7 +190,7 @@ getPointsData = function(userId){
 			res.tasksCounted.push(task._id);
 		}	
 	});
-
+ 
 	return res;
 
 };

@@ -9,11 +9,6 @@ addTag = function (options) {
   if(_.isEmpty(options.label))
     return;
 
-  /*if(_.isUndefined(options.user)){
-    console.log('userId is undefined to create tag '+options.label);
-    return;
-  }*/
-
   //alias must be unique but i don't know how to unique : true in meteor
   var tag = Tags.findOne({alias : getAlias(options.label), user : options.user});
 

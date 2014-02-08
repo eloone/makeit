@@ -1,4 +1,4 @@
-initAllTag = function(userId){
+initAllTag = function(){
 	console.log('initAllTag');
 
 	var alltag = Tags.findOne({alias : 'all'}),
@@ -13,17 +13,17 @@ initAllTag = function(userId){
 	return alltagId;
 };
 
+//this can only be called when the client page is reloaded
+//because we need the userID
 initPoints = function(userId){
 	console.log('initPoints');
-	console.log('userId');
-	console.log(userId);
+
 	var points = Points.findOne({user : userId}),
 		pointsId;
-console.log(points);
+
 	if(_.isUndefined(points) || _.isEmpty(points)){
 		var pointsData = getPointsData(userId);
-console.log('pointsData');
-console.log(pointsData);
+
 		pointsId = Points.insert(_.extend(
 			{
 				user : userId

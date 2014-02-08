@@ -112,7 +112,17 @@ toggleDone = function(task){
     return;
   }
 
-  var updated = Tasks.update({_id: task._id}, {$set: {done : task.done}});
+  var toUpdate = Tasks.findOne({_id : task._id});
+  var updated = 0;
+
+  //sadly we have to make this test and check if you have to update because this function gets called twice in production
+  //why???
+  
+  if(toUpdate.done !== task.done){
+
+    updated = Tasks.update({_id: task._id}, {$set: {done : task.done}});
+
+  }
 
   return updated;
 };

@@ -1,5 +1,5 @@
 //Returns suggested tasks
-getSuggestedTasks = function(){
+/*getSuggestedTasks = function(){
     if (! Meteor.user())
     return ;
 
@@ -45,7 +45,7 @@ getSuggestedTasks = function(){
   }
 
   return tasks_suggested;
-};
+};*/
 
 // Exports tasks list
 Template['task-list'].tasks = function () {
@@ -125,8 +125,8 @@ Template['task-list'].events({
 
     Meteor.call('toggleDone', 
     {
-      _id : $line.data('id'),
-      done : !$line.hasClass('done')
+      _id : task._id,
+      done : !task.done
     }, function(err, res){
       if(res){
         checkReward($line.data('id'));

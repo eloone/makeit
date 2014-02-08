@@ -2,51 +2,99 @@ Meteor.publish('pointsData', function () {
 	var userId = this.userId;
 	var queryIsOngoing = true;
 	var doneTasksObserver = Tasks.find({user : this.userId, done : true}).observe({
+		/*
+			Attention please:
 
+			for some unknown cryptic reason the following callbacks are called twice when the result set of the query above
+			changes - and only in production !!
+			so to work around this and prevent any further suicidal attempts we track the tasks that were already treated in
+			the added and removed callbacks in the Points.tasksCounted ppty and we apply the callback only if the task was not treated yet			
+
+		*/
 		added : function(task){
-			var points,
-				inc = {};
-			
+
+			var userPoints = Points.findOne({user : userId});
+
 			//do nothing if results are not ready #hackOverCliff !!
-			if(queryIsOngoing)
+			if(queryIsOngoing){
 				return;
+			}
 
-			var difficultyKey = 'difficulty.level'+task.difficulty;
-			var satisfactionKey = 'satisfaction.level'+task.satisfaction;
-			points = getPoints(task); 
+			if(_.isUndefined(userPoints.tasksCounted)){
+				return;
+			}
 
-			inc = {
-				done : 1,
-				points : points
-			};
+			//if task id is present in the Points.tasksCounted array
+			//it means when it was added to the result set it has already been taken into account to count its points
+			//so we shouldn't count it again
+			var alreadyUpdated = userPoints.tasksCounted.indexOf(task._id) > -1;
 
-			inc[difficultyKey] = 1;
-			inc[satisfactionKey] = 1;
+			if(alreadyUpdated == false){
+				shameHack(task);
+			}	
 
-			var updated = Points.update({user : userId}, {$inc : inc});
+			function shameHack(task){
+				var points,
+					inc = {},
+					difficultyKey = 'difficulty.level'+task.difficulty,
+					satisfactionKey = 'satisfaction.level'+task.satisfaction;
+
+				//gets the total points for task
+				points = getPoints(task); 
+
+				inc = {
+					done : 1,
+					points : points
+				};
+
+				inc[difficultyKey] = 1;
+				inc[satisfactionKey] = 1;
+
+				var updated = Points.update({user : userId}, {$inc : inc, $addToSet : {tasksCounted : task._id}});
+
+			}			
 
 		},
 		removed : function(task){
-			var points,
-				inc = {};
+
+			var userPoints = Points.findOne({user : userId});
 
 			//do nothing if results are not ready #hackOverCliff !!
-			if(queryIsOngoing)
+			if(queryIsOngoing){
 				return;
+			}
 
-			var difficultyKey = 'difficulty.level'+task.difficulty;
-			var satisfactionKey = 'satisfaction.level'+task.satisfaction;
-			points = getPoints(task);
+			if(_.isUndefined(userPoints.tasksCounted)){
+				return;
+			}
 
-			inc = {
-				done : -1,
-				points : -points
-			};
+			//if task is not present in Points then it means it has already been removed 
+			//and taken into account to count the points
+			var alreadyUpdated = userPoints.tasksCounted.indexOf(task._id) < 0;
 
-			inc[difficultyKey] = -1;
-			inc[satisfactionKey] = -1;
+			if(alreadyUpdated == false){
+				shameHack(task);
+			}
 
-			var updated = Points.update({user : userId}, {$inc : inc}); 
+			function shameHack(task){
+				var points,
+					inc = {},
+				 	difficultyKey = 'difficulty.level'+task.difficulty,
+					satisfactionKey = 'satisfaction.level'+task.satisfaction;
+
+				points = getPoints(task);
+
+				inc = {
+					done : -1,
+					points : -points
+				};
+
+				inc[difficultyKey] = -1;
+				inc[satisfactionKey] = -1;
+
+				var updated = Points.update({user : userId}, {$inc : inc, $pull : {tasksCounted : task._id}}); 
+
+			}		
 
 		}
 	});
@@ -119,11 +167,9 @@ getPointsData = function(userId){
 			level3 : 0
 		},
 		done : 0,
-		points : 0
+		points : 0,
+		tasksCounted : []
 	};
-console.log('getPointsData');
-console.log('userId:');
-console.log(userId);
 
 	var tasks = Tasks.find({
 		user : userId,
@@ -140,6 +186,9 @@ console.log(userId);
 		res['difficulty']['level'+task.difficulty]++;
 		res['satisfaction']['level'+task.satisfaction]++; 
 		res.points += getPoints(task);
+		if(res.tasksCounted.indexOf(task._id) < 0 ){
+			res.tasksCounted.push(task._id);
+		}	
 	});
 
 	return res;
